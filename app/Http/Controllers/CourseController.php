@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -31,16 +32,6 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-         $current_id = Auth::user()->id;
-        if($request->hasFile("course_image")){
-
-
-            $imageName = Auth::user()->id."-course-".Str::lower(Str::random(20)).".".$request->file("course_image")->extension();
-            $imagePath = "uploads/course/".$imageName;
-            Image::make($request->file("course_image"))->resize(300, 200)->save($imagePath);
-            echo "done";
-        }
-        die();
         $request->validate([
             "course_title" => "required ||unique:courses,course_title",
             "course_price" => "required",
@@ -52,6 +43,24 @@ class CourseController extends Controller
             "course_price.required" => "Course Price is required",
             "course_image.required" => "Course Image is required",
         ]);
+        $courseId = Course::insertGetId($request->except('_token') + [
+            "created_at" => Carbon::now()
+        ]);
+
+        //first calculate image start
+        if($request->hasFile("course_image")){
+            $imageName ="-course-".Str::lower(Str::random(20)).".".$request->file("course_image")->extension();
+            $imagePath = "uploads/course/".$imageName;
+            Image::make($request->file("course_image"))->resize(300, 200)->save($imagePath);
+
+            //update database
+            Course::find($courseId)->update([
+                "course_image" => $imageName,
+            ]);
+         //update database
+        }
+    //first calculate image start
+
         return back();
     }
 
