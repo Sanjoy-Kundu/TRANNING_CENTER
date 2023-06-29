@@ -18,21 +18,33 @@
 								<div class="mb-3">
 									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Course Title</b></label>
 									<input type="text" class="form-control" name="course_title" placeholder="Enter Your Title">
+                                    @error('course_title')
+                                        <span class="text-danger"><b>{{$message}}</b></span>
+                                    @enderror
 								  </div>
 
 								<div class="mb-3">
 									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Course Price</b></label>
 									<input type="number" class="form-control" name="course_price" placeholder="Enter Your Price">
+                                    @error('course_price')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
 								  </div>
 
 								  <div class="mb-3">
 									<label for="exampleFormControlTextarea1" class="form-label"><b class="fs-5">Course Description</b></label>
 									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="course_description"></textarea>
+                                    @error('course_description')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
 								  </div>
 
 								  <div class="mb-3">
 									<label for="formFile" class="form-label"><b class="fs-5">Course Image</b></label>
 									<input class="form-control" type="file" id="formFile" name="course_image">
+                                    @error('course_image')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
 								  </div>
 								  <div class="mb-3">
 									<label for="formFile" class="form-label"></label>
