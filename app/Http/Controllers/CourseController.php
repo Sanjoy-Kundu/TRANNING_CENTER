@@ -36,7 +36,7 @@ class CourseController extends Controller
             "course_title" => "required ||unique:courses,course_title",
             "course_price" => "required",
             "course_description" => "required",
-            "course_image" => "required",
+             "course_image" => "required",
         ],[
             "course_title.required" => "Course Title is required",
             "course_title.unique" => "Course Name already taken",
@@ -61,7 +61,7 @@ class CourseController extends Controller
         }
     //first calculate image start
 
-        return back();
+        return back()->with('success', "Course Inserted Successfully");
     }
 
     /**

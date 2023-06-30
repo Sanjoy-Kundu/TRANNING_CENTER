@@ -11,6 +11,9 @@
                 <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4 mx-auto">
                   <div class="card">
                     <div class="row row-bordered g-0">
+                        @if (session('success'))
+                            <div class="alert alert-success">{{session('success')}}</div>
+                        @endif
 						<h4 class="text-center p-2"><strong>Upload Your Courses</strong></h4>
                       <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
 							<form action="{{route('course.store')}}" method="post" enctype="multipart/form-data">
