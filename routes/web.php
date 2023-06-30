@@ -4,6 +4,8 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuccessStudentController;
+use App\Http\Controllers\TrainerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +31,12 @@ Route::get('/course', [CourseController::class, 'create'])->name('course'); //sh
 Route::post('course/store', [CourseController::class, 'store'])->name('course.store');
 
 
+Route::get('/trainer', [TrainerController::class, 'create'])->name('trainer');
+Route::post('trainer/store', [TrainerController::class, 'store'])->name('trainer.store');
 
+
+Route::get('/success/student', [SuccessStudentController::class, 'create'])->name("success.student");
+Route::post('success/student/store', [SuccessStudentController::class, 'store'])->name('success.student.store');
 
 
 // Route::get('/dashboard', function () {

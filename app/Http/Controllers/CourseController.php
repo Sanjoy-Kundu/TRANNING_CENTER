@@ -51,7 +51,7 @@ class CourseController extends Controller
         if($request->hasFile("course_image")){
             $imageName ="-course-".Str::lower(Str::random(20)).".".$request->file("course_image")->extension();
             $imagePath = "uploads/course/".$imageName;
-            Image::make($request->file("course_image"))->resize(300, 200)->save($imagePath);
+            Image::make($request->file("course_image"))->resize(400, 400)->save($imagePath);
 
             //update database
             Course::find($courseId)->update([

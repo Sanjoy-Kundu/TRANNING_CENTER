@@ -157,12 +157,12 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="traniners_upload.html" class="menu-link">
+                  <a href="{{route('trainer')}}" class="menu-link">
                     <div data-i18n="Notifications">Upload Trainers</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="student_success_upload.html" class="menu-link">
+                  <a href="{{route('success.student')}}" class="menu-link">
                     <div data-i18n="Connections">Upload Success Students</div>
                   </a>
                 </li>

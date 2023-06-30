@@ -23,10 +23,16 @@
                         <h1><i class="fa-brands fa-discourse m-3 text-primary"></i>Courses</h1>
                         <div class="card-body">
                           <h3 class="card-title">Total Courses</h3>
-                          <h3 class="card-text text-primary">40</h3>
+                          @if ($all_courses->count()>0)
+                          <h3 class="card-text text-primary">{{$all_courses->count()}}</h3>
+                          @else
+                          <h3 class="card-text text-primary">0</h3>
+                          @endif
                         </div>
                       </div>
                     </div>
+
+
                     <div class="col">
                       <div class="card h-100">
                         <h1><i class="fa-sharp fa-regular fa-calendar-days m-3 text-primary"></i>Events</h1>
@@ -37,15 +43,21 @@
                       </div>
                     </div>
 
+
                     <div class="col">
                       <div class="card h-100">
                         <h1><i class="fa-solid fa-chalkboard-user m-3 text-primary"></i>Trainers</h1>
                         <div class="card-body">
                           <h3 class="card-title">Total Trainers</h3>
-                          <h3 class="card-text text-primary">60</h3>
+                          @if ($all_trainers->count()>0)
+                          <h3 class="card-text text-primary">{{$all_trainers->count()}}</h3>
+                          @else
+                          <h3 class="card-text text-primary">0</h3>
+                          @endif
                         </div>
                       </div>
                     </div>
+
 
                     <div class="col">
                       <div class="card h-100">
@@ -56,6 +68,7 @@
                         </div>
                       </div>
                     </div>
+
 
                     <div class="col">
                       <div class="card h-100">
