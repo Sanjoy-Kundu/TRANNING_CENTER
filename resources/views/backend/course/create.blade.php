@@ -34,6 +34,8 @@
                                    @enderror
 								  </div>
 
+
+
 								  <div class="mb-3">
 									<label for="exampleFormControlTextarea1" class="form-label"><b class="fs-5">Course Description</b></label>
 									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="course_description"></textarea>
@@ -41,6 +43,7 @@
                                     <span class="text-danger"><b>{{$message}}</b></span>
                                    @enderror
 								  </div>
+
 
 								  <div class="mb-3">
 									<label for="formFile" class="form-label"><b class="fs-5">Course Image</b></label>
@@ -67,6 +70,16 @@
 
             </div>
             <!-- / Content -->
+
+
+    <script>
+      $('#summernote').summernote({
+        placeholder: 'Hello Bootstrap 5',
+        tabsize: 2,
+        height: 100
+      });
+    </script>
+
 
           @endsection
 

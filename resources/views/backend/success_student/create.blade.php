@@ -16,7 +16,7 @@
             <div class="row row-bordered g-0">
                 <h4 class="text-center p-2"><strong>Upload Your Successfull Student Story</strong></h4>
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-                    <form action="{{route('success.student.store')}}" method="POST">
+                    <form action="{{route('success.student.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label"><b class="fs-5">Student Name</b></label>
@@ -28,7 +28,7 @@
 
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label"><b class="fs-5">Student Title</b></label>
-                            <input type="number" class="form-control" name="student_title" placeholder="Enter Your title">
+                            <input type="text" class="form-control" name="student_title" placeholder="Enter Your title">
                             @error('student_title')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror

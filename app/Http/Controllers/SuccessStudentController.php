@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuccessStudent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class SuccessStudentController extends Controller
 {
@@ -41,9 +44,23 @@ class SuccessStudentController extends Controller
             'student_image.required' => "This field is required",
         ]);
 
-        return back()->with('success', 'Student Story Uploaded Successfully');
 
+        $StudentSuccessId =  SuccessStudent::insertGetId($request->except('_token') + [
+            "created_at" => Carbon::now(),
+        ]);
+            if($request->hasFile("student_image")){
+                 $imageName ="success-student-".Str::lower(Str::random(20)).".".$request->file('student_image')->extension();
+                 $imagePath = "uploads/student_success/".$imageName;
+                 Image::make($request->file('student_image'))->resize(400, 400)->save($imagePath);
+                //image database update
+                SuccessStudent::find($StudentSuccessId)->update([
+                    "student_image" => $imageName,
+                ]);
+            }
+        return back()->with('success', 'Student Story Uploaded Successfully');
     }
+
+
 
     /**
      * Display the specified resource.

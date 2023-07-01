@@ -44,8 +44,6 @@
     <link rel="stylesheet" href="{{asset('assets/backend')}}/css/demo.css" />
 
 
-
-
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('assets/backend')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
