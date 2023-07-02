@@ -26,13 +26,78 @@
                                     @enderror
 								  </div>
 
+                                  <div class="mb-3">
+									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Course Instructor</b></label>
+                                    <select class="form-select" name="instructor_id">
+                                        @if (count($Instructors) > 0 )
+                                        <option value="">Select Your Instructor</option>
+                                        @foreach ($Instructors as  $Instructor)
+                                            <option value="{{$Instructor->id}}">{{$Instructor->trainer_name}}({{$Instructor->trainer_title}})</option>
+                                        @endforeach
+                                        @else
+                                        <option value="">Please Upload Your Instructor</option>
+                                        @endif
+
+                                         </select>
+									{{-- <input type="text" class="form-control" name="course_title" placeholder="Enter Your Title">
+                                    @error('course_title')
+                                        <span class="text-danger"><b>{{$message}}</b></span>
+                                    @enderror --}}
+								  </div>
+
+
+								<div class="mb-3">
+									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Course Category</b></label>
+                                    <select class="form-select" name="category_id">
+                                        @if (count($courseCategories) > 0 )
+                                        <option value="">Select Your Category</option>
+                                        @foreach ($courseCategories as  $category)
+                                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                        @endforeach
+                                        @else
+                                        <option value="">Please Upload Your Category</option>
+                                        @endif
+
+                                         </select>
+									{{-- <input type="text" class="form-control" name="course_title" placeholder="Enter Your Title">
+                                    @error('course_title')
+                                        <span class="text-danger"><b>{{$message}}</b></span>
+                                    @enderror --}}
+								  </div>
+
+
 								<div class="mb-3">
 									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Course Price</b></label>
 									<input type="number" class="form-control" name="course_price" placeholder="Enter Your Price">
                                     @error('course_price')
                                     <span class="text-danger"><b>{{$message}}</b></span>
                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Course Duration</b></label>
+									<input type="number" class="form-control" name="course_duration" placeholder="Enter Your Price">
+                                    @error('course_duration')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
+                                </div>
+
+
+								<div class="mb-3">
+									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Discount</b></label>
+									<input type="number" class="form-control" name="discount" placeholder="Enter Your Discount">
+                                    @error('discount')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
 								  </div>
+
+								{{-- <div class="mb-3">
+									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Discounted Price</b></label>
+									<input type="number" class="form-control" name="discounted_price" placeholder="Enter Your Discounted Price">
+                                    @error('discounted_price')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
+								  </div> --}}
 
 
 

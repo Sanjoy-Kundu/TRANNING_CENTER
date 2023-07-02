@@ -150,6 +150,11 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
+                  <a href="{{route('category')}}" class="menu-link">
+                    <div data-i18n="Account">Upload Category</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="{{route('course')}}" class="menu-link">
                     <div data-i18n="Account">Upload Course</div>
                   </a>
@@ -165,7 +170,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="partner_upload.html" class="menu-link">
+                  <a href="{{route('partner.form')}}" class="menu-link">
                     <div data-i18n="Connections">Upload Partners</div>
                   </a>
                 </li>
