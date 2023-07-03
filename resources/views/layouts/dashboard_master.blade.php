@@ -198,13 +198,13 @@
                     <div data-i18n="Notifications">Trainers List</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="students_list.html" class="menu-link">
+                <li class="menu-item {{request()->is('success/student/list') ? 'active' : ' '}}">
+                  <a href="{{route('success.student.list')}}" class="menu-link">
                     <div data-i18n="Connections">Students List</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="partner_list.html" class="menu-link">
+                <li class="menu-item {{(request()->is('partner/list')) ? 'active' : ' '}}">
+                  <a href="{{route('partner.list')}}" class="menu-link">
                     <div data-i18n="Connections">Partners List</div>
                   </a>
                 </li>

@@ -15,7 +15,8 @@ class SuccessStudentController extends Controller
      */
     public function index()
     {
-        //
+        $successStudents = SuccessStudent::all();
+        return view('backend.success_student.index', compact('successStudents'));
     }
 
     /**
@@ -51,7 +52,7 @@ class SuccessStudentController extends Controller
             if($request->hasFile("student_image")){
                  $imageName ="success-student-".Str::lower(Str::random(20)).".".$request->file('student_image')->extension();
                  $imagePath = "uploads/student_success/".$imageName;
-                 Image::make($request->file('student_image'))->resize(400, 400)->save($imagePath);
+                 Image::make($request->file('student_image'))->resize(700, 700)->save($imagePath);
                 //image database update
                 SuccessStudent::find($StudentSuccessId)->update([
                     "student_image" => $imageName,
@@ -65,9 +66,10 @@ class SuccessStudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SuccessStudent $successStudent)
+    public function show($id)
     {
-        //
+         $successStudentView = SuccessStudent::find($id);
+         return view('backend.success_student.view', compact('successStudentView'));
     }
 
     /**

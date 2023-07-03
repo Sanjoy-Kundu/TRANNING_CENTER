@@ -8,7 +8,7 @@ use App\Http\Controllers\OurpartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuccessStudentController;
 use App\Http\Controllers\TrainerController;
-
+use App\Models\SuccessStudent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,11 +49,15 @@ Route::get('trainer/view/{id}', [TrainerController::class, 'show'])->name('train
 
 Route::get('/success/student', [SuccessStudentController::class, 'create'])->name("success.student");
 Route::post('success/student/store', [SuccessStudentController::class, 'store'])->name('success.student.store');
+Route::get('success/student/list', [SuccessStudentController::class, 'index'])->name('success.student.list');
+Route::get('student/view/{id}', [SuccessStudentController::class, 'show'])->name('student.view');
 
 
 
 Route::get('partner/form', [OurpartnerController::class, 'create'])->name('partner.form');
 Route::post('partner/store', [OurpartnerController::class, 'store'])->name('partner.store');
+Route::get('partner/list', [OurpartnerController::class, 'index'])->name('partner.list');
+Route::get('partner/view/{id}', [OurpartnerController::class, 'show'])->name('partner.view');
 
 
 

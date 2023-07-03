@@ -15,7 +15,8 @@ class OurpartnerController extends Controller
      */
     public function index()
     {
-        //
+        $partners = Ourpartner::all();
+        return view('backend.partner.index', compact('partners'));
     }
 
     /**
@@ -66,9 +67,10 @@ class OurpartnerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ourpartner $ourpartner)
+    public function show($id)
     {
-        //
+        $partnerView = Ourpartner::find($id);
+        return view('backend.partner.view', compact('partnerView'));
     }
 
     /**
