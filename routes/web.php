@@ -43,6 +43,8 @@ Route::get('course/view/{id}', [CourseController::class, 'show'])->name('course.
 
 Route::get('/trainer', [TrainerController::class, 'create'])->name('trainer');
 Route::post('trainer/store', [TrainerController::class, 'store'])->name('trainer.store');
+Route::get('trainer/list', [TrainerController::class, 'index'])->name('trainer.list');
+Route::get('trainer/view/{id}', [TrainerController::class, 'show'])->name('trainer.view');
 
 
 Route::get('/success/student', [SuccessStudentController::class, 'create'])->name("success.student");

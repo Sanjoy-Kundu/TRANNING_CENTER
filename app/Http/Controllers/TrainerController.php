@@ -15,7 +15,8 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        //
+        $trainers = Trainer::all();
+        return view('backend.trainer.index', compact('trainers'));
     }
 
     /**
@@ -64,7 +65,7 @@ class TrainerController extends Controller
         if($request->hasFile("trainer_image")){
             $imageName = "trainer-".Str::lower(Str::random(20)).'.'.$request->file('trainer_image')->extension();
             $imagePath = "uploads/trainers/".$imageName;
-            Image::make($request->file("trainer_image"))->resize(300, 200)->save($imagePath);
+            Image::make($request->file("trainer_image"))->resize(700, 700)->save($imagePath);
 
             //trainer image update start
             Trainer::find($trainerId)->update([
@@ -75,13 +76,15 @@ class TrainerController extends Controller
         return back()->with('success', "Trainer Added Successfully");
     }
 
-    
+
     /**
      * Display the specified resource.
      */
-    public function show(Trainer $trainer)
+    public function show($id)
     {
-        //
+        $singleTrainer = Trainer::find($id);
+
+        return view('backend.trainer.view', compact('singleTrainer'));
     }
 
     /**

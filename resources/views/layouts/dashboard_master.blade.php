@@ -16,7 +16,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Mentor Dashboard</title>
+    <title> Dashboard</title>
 
     <meta name="description" content="" />
 
@@ -44,9 +44,7 @@
     <link rel="stylesheet" href="{{asset('assets/backend')}}/css/demo.css" />
 
        <!--DATA TABLES--->
-       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('assets/backend')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -138,7 +136,8 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            {{-- <li class="{{ (request()->is('admin/cities')) ? 'active' : '' }}"> --}}
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -153,27 +152,27 @@
                 <div data-i18n="Account Settings">Settings Corner</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{(request()->is('category')) ? 'active' : ' '}}">
                   <a href="{{route('category')}}" class="menu-link">
                     <div data-i18n="Account">Upload Category</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="{{route('course')}}" class="menu-link">
+                <li class="menu-item {{(request()->is('course')) ? 'active' : ' '}}">
+                  <a href="{{route('course')}}" class="menu-link ">
                     <div data-i18n="Account">Upload Course</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{(request()->is('trainer')) ? 'active' : ' '}}">
                   <a href="{{route('trainer')}}" class="menu-link">
                     <div data-i18n="Notifications">Upload Trainers</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{(request()->is('success/student')) ? 'active' : ' '}}">
                   <a href="{{route('success.student')}}" class="menu-link">
                     <div data-i18n="Connections">Upload Success Students</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{(request()->is('partner/form')) ? 'active' : ' '}}">
                   <a href="{{route('partner.form')}}" class="menu-link">
                     <div data-i18n="Connections">Upload Partners</div>
                   </a>
@@ -189,13 +188,13 @@
                 <div data-i18n="Account Settings">All Uploaded List</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
                   <a href="{{route('course.list')}}" class="menu-link">
                     <div data-i18n="Account">Course list</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="trainers_list.html" class="menu-link">
+                <li class="menu-item {{(request()->is('trainer/list')) ? 'active' : ' '}}">
+                  <a href="{{route('trainer.list')}}" class="menu-link">
                     <div data-i18n="Notifications">Trainers List</div>
                   </a>
                 </li>
@@ -419,6 +418,9 @@ class="btn btn-danger btn-buy-now"
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </body>
 </html>
 
