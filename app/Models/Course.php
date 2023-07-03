@@ -10,4 +10,8 @@ class Course extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['course_image'];
+
+    function relationWithTrainers(){
+        return $this->hasOne(Trainer::class, 'id', 'instructor_id');
+    }
 }

@@ -18,7 +18,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('backend.course.index', compact('courses'));
     }
 
     /**
@@ -64,7 +65,7 @@ class CourseController extends Controller
 
 
 
-        $courseId = Course::insert([
+        $courseId = Course::insertGetId([
             'user_id' => Auth::user()->id,
             'course_title' => $request->course_title,
             'category_id' => $request->category_id,
@@ -99,9 +100,11 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show($id)
     {
-        //
+
+         $singleInfo = Course::find($id);
+         return view('backend.course.view', compact('singleInfo'));
     }
 
     /**

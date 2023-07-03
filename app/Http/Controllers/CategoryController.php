@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
                //first calculate image start
                if($request->hasFile("category_image")){
-                $imageName ="category-".Str::lower(Str::random(20)).".".$request->file("category_image")->extension();
+                $imageName =$categoryId."-"."category-".Str::lower(Str::random(20)).".".$request->file("category_image")->extension();
                 $imagePath = "uploads/category/".$imageName;
                 Image::make($request->file("category_image"))->resize(400, 400)->save($imagePath);
 

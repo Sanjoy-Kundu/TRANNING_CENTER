@@ -34,8 +34,11 @@ Route::get('/category', [CategoryController::class, 'create'])->name('category')
 Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
 
 
+
+Route::get('/course/list',[CourseController::class, 'index'])->name('course.list');
 Route::get('/course', [CourseController::class, 'create'])->name('course'); //show form
 Route::post('course/store', [CourseController::class, 'store'])->name('course.store');
+Route::get('course/view/{id}', [CourseController::class, 'show'])->name('course.view');
 
 
 Route::get('/trainer', [TrainerController::class, 'create'])->name('trainer');

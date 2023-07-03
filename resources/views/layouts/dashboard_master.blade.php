@@ -43,6 +43,10 @@
     <link rel="stylesheet" href="{{asset('assets/backend')}}/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{asset('assets/backend')}}/css/demo.css" />
 
+       <!--DATA TABLES--->
+       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('assets/backend')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -186,7 +190,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="couse_list.html" class="menu-link">
+                  <a href="{{route('course.list')}}" class="menu-link">
                     <div data-i18n="Account">Course list</div>
                   </a>
                 </li>
