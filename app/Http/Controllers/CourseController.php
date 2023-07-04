@@ -44,12 +44,14 @@ class CourseController extends Controller
             "course_duration" => "required",
             "course_description" => "required",
              "course_image" => "required",
+             "total_seats" => "required",
         ],[
             "course_title.required" => "Course Title is required",
             "course_title.unique" => "Course Name already taken",
             "course_price.required" => "Course Price is required",
             "course_duration.required" => "Course Duration is required",
             "course_image.required" => "Course Image is required",
+            "total_seats.required" => "Total  is required",
         ]);
 
 
@@ -73,6 +75,7 @@ class CourseController extends Controller
             'course_price' => $request->course_price,
             'course_duration' => $request->course_duration,
             'discount' => $discount,
+            'total_seats' => $request->total_seats,
             'discounted_price' => $discounted_price,
             'course_description' => $request->course_description,
             'course_image' => $request->course_image,
@@ -110,9 +113,13 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
-        //
+
+        $editItem =  Course::find($id);
+        $Instructors = Trainer::all();
+        $courseCategories = Category::all();
+        return view('backend.course.edit', compact('editItem','Instructors', 'courseCategories'));
     }
 
     /**

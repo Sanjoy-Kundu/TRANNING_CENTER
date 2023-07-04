@@ -20,6 +20,7 @@
                       <th scope="col">Serial No</th>
                       <th scope="col">Course Name</th>
                       <th scope="col">Course Price</th>
+                      <th scope="col">Course Seats</th>
                       <th scope="col">Course Duration</th>
                       <th scope="col">Image</th>
                       <th scope="col">Action</th>
@@ -37,6 +38,7 @@
                             <th scope="row">{{$loop->index+1}}</th>
                             <td>{{$course->course_title}}</td>
                             <td>{{$course->course_price}}</td>
+                            <td>{{$course->total_seats}}</td>
                             <td>{{$course->course_duration}} Months</td>
                             <td align="center">
                                 @if ($course->course_image)
@@ -49,14 +51,16 @@
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                                 <button type="button" class="btn btn-danger">DELETE</button>
-                                <button type="button" class="btn btn-info">UPDATE</button>
+                                <button type="button" class="btn btn-info"><a href="{{route('course.edit', $course->id)}}" class="text-white">EDIT</a></button>
                                 <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('course.view', $course->id)}}">View</a></button>
                               </div>
                             </td>
                           </tr>
                         @endforeach
                     @else
-
+                          <tr>
+                            <td colspan="8" align="center">No Course Uploaded Yet</td>
+                          </tr>
                     @endif
 
 

@@ -110,6 +110,15 @@
 								  </div>
 
 
+								<div class="mb-3">
+									<label for="formGroupExampleInput" class="form-label"><b class="fs-5">Total Seats</b></label>
+									<input type="number" class="form-control" name="total_seats" placeholder="Enter Total Seats">
+                                    @error('total_seats')
+                                    <span class="text-danger"><b>{{$message}}</b></span>
+                                   @enderror
+								  </div>
+
+
 								  <div class="mb-3">
 									<label for="formFile" class="form-label"><b class="fs-5">Course Image</b></label>
 									<input class="form-control" type="file" id="formFile" name="course_image">

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('course_price');
             $table->integer('course_duration');
             $table->integer('discount');
+            $table->integer('total_seats');
             $table->integer('discounted_price');
             $table->longText('course_description');
             $table->longText('course_image');

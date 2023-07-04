@@ -14,4 +14,8 @@ class Course extends Model
     function relationWithTrainers(){
         return $this->hasOne(Trainer::class, 'id', 'instructor_id');
     }
+
+    function relationWithCategory(){
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
 }

@@ -14,7 +14,7 @@
                 <h4 class="text-center p-2"><strong>Course Details</strong></h4>
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
 
-                {{$singleInfo}}
+
                 <table class="table table-bordered">
                   <thead>
 
@@ -90,7 +90,7 @@
 
 
 
-                </table> 
+                </table>
               </div>
             </div>
           </div>
