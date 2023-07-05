@@ -125,10 +125,80 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Course $course)
-    {
-        //
+    function update(Request $request, $id){
+
+                Course::find($id)->update([
+            'course_title' => $request->course_title,
+            'category_id' => $request->category_id,
+            'instructor_id' => $request->instructor_id,
+            'course_price' => $request->course_price,
+            'course_duration' => $request->course_duration,
+            'discount' => $request->discount,
+            'total_seats' => $request->total_seats,
+            'discounted_price' => $request->discounted_price,
+            'course_description' => $request->course_description,
+       ]);
+
+           //         // return $request->hasFile('update_course_image');
+            if($request->hasFile('course_image')){
+                $course_image = Course::find($id)->course_image;
+                if($course_image != NULL){
+                   unlink(public_path('uploads/course/'.$course_image));
+                }
+
+                $update_image = "update-course-".Str::lower(Str::random(20)).".".$request->file("course_image")->extension();
+                $path = 'uploads/course/'.$update_image;
+                Image::make($request->file("course_image"))->resize(400, 400)->save($path);
+
+                Course::find($id)->update([
+                   'course_image' => $update_image,
+                ]);
+           }
+
+
+
+       return back();
     }
+
+
+    //      function update(Request $request, $id)
+    // {
+    //     return $request;
+    //     die();
+
+    //     Course::find($id)->update([
+    //         'course_price' => $request->update,
+    //         'course_title' => $request->course_title,
+    //         'category_id' => $request->category_id,
+    //         'instructor_id' => $request->instructor_id,
+    //         'course_price' => $request->course_price,
+    //         'course_duration' => $request->course_duration,
+    //         'discount' => $request->discount,
+    //         'total_seats' => $request->total_seats,
+    //         'discounted_price' => $request->discounted_price,
+    //         'course_description' => $request->course_description,
+    //    ]);
+
+
+    //         // return $request->hasFile('update_course_image');
+    //         if($request->hasFile('update_course_image')){
+    //             $course_image = Course::find($id)->course_image;
+    //             if($course_image != NULL){
+    //                unlink(public_path('uploads/course/'.$course_image));
+    //             }
+
+    //             $update_image = "update-course-".Str::lower(Str::random(20)).".".$request->file("update_course_image")->extension();
+    //             $path = 'uploads/course/'.$update_image;
+    //             Image::make($request->file("update_course_image"))->resize(400, 400)->save($path);
+
+    //             Course::find($id)->update([
+    //                'course_image' => $update_image,
+    //             ]);
+    //        }
+
+
+    //    return back()->with('success', 'Course Updated Successfully');
+    // }
 
     /**
      * Remove the specified resource from storage.

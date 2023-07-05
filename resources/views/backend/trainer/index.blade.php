@@ -52,7 +52,7 @@
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                                 <button type="button" class="btn btn-danger">DELETE</button>
-                                <button type="button" class="btn btn-info">UPDATE</button>
+                                <button type="button" class="btn btn-info"><a href="{{route('trainer.edit', $trainer->id)}}">EDIT</a></button>
                                 <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('trainer.view', $trainer->id)}}">View</a></button>
                               </div>
                             </td>

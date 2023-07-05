@@ -90,17 +90,26 @@ class TrainerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Trainer $trainer)
+    public function edit($id)
     {
-        //
+        $trainer = Trainer::find($id);
+        return view('backend.trainer.edit', compact('trainer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Trainer $trainer)
+    public function update(Request $request,$id)
     {
-        //
+        Trainer::find($id)->update([
+            'trainer_name' =>$request->trainer_name,
+            'trainer_title' =>$request->trainer_title,
+            'trainer_description' =>$request->trainer_description,
+            'trainer_salary' =>$request->trainer_salary,
+            'trainer_facebook_link' =>$request->trainer_facebook_link,
+            'trainer_linkdin_link' =>$request->trainer_linkdin_link,
+        ]);
+        return back();
     }
 
     /**

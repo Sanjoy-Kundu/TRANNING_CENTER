@@ -40,12 +40,16 @@ Route::get('/course', [CourseController::class, 'create'])->name('course'); //sh
 Route::post('course/store', [CourseController::class, 'store'])->name('course.store');
 Route::get('course/view/{id}', [CourseController::class, 'show'])->name('course.view');
 Route::get('course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
+Route::post('course/update/{id}', [CourseController::class, 'update'])->name('course.update');
+
 
 
 Route::get('/trainer', [TrainerController::class, 'create'])->name('trainer');
 Route::post('trainer/store', [TrainerController::class, 'store'])->name('trainer.store');
 Route::get('trainer/list', [TrainerController::class, 'index'])->name('trainer.list');
 Route::get('trainer/view/{id}', [TrainerController::class, 'show'])->name('trainer.view');
+Route::get('trainer/edit/{id}', [TrainerController::class, 'edit'])->name('trainer.edit');
+Route::post('trainer/update/{id}', [TrainerController::class, 'update'])->name('trainer.update');
 
 
 Route::get('/success/student', [SuccessStudentController::class, 'create'])->name("success.student");
