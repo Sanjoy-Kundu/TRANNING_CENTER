@@ -286,6 +286,8 @@
                   >
                 </li>
 
+
+
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -327,6 +329,13 @@
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle" id="status"><b></b></span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="#">
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
                           <span class="flex-grow-1 align-middle">Billing</span>
@@ -334,6 +343,7 @@
                         </span>
                       </a>
                     </li>
+
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
@@ -399,6 +409,10 @@ class="btn btn-danger btn-buy-now"
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
+
+
+
+<script src="{{asset('assets')}}/custom.js"></script>
 <script src="{{asset('assets/backend')}}/vendor/libs/jquery/jquery.js"></script>
 <script src="{{asset('assets/backend')}}/vendor/libs/popper/popper.js"></script>
 <script src="{{asset('assets/backend')}}/vendor/js/bootstrap.js"></script>
@@ -421,6 +435,7 @@ class="btn btn-danger btn-buy-now"
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 </body>
 </html>
 
