@@ -8,6 +8,7 @@ use App\Http\Controllers\OurpartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuccessStudentController;
 use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\UserController;
 use App\Models\SuccessStudent;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,8 @@ Route::get('/', [FrontendController::class, 'index']);
 
 Route::get('/dashboard', [BackendController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/user/list', [UserController::class, 'index'])->name('user.list');
+
 
 Route::get('/category', [CategoryController::class, 'create'])->name('category');
 Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
@@ -41,6 +44,7 @@ Route::post('course/store', [CourseController::class, 'store'])->name('course.st
 Route::get('course/view/{id}', [CourseController::class, 'show'])->name('course.view');
 Route::get('course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
 Route::post('course/update/{id}', [CourseController::class, 'update'])->name('course.update');
+Route::get('course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
 
 
 

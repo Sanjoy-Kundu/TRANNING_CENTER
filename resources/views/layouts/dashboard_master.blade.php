@@ -51,6 +51,10 @@
 
     <link rel="stylesheet" href="{{asset('assets/backend')}}/vendor/libs/apex-charts/apex-charts.css" />
 
+
+    <!--Toaster.js Cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -203,9 +207,9 @@
                     <div data-i18n="Connections">Students List</div>
                   </a>
                 </li>
-                <li class="menu-item {{(request()->is('partner/list')) ? 'active' : ' '}}">
-                  <a href="{{route('partner.list')}}" class="menu-link">
-                    <div data-i18n="Connections">Partners List</div>
+                <li class="menu-item {{(request()->is('user/list')) ? 'active' : ' '}}">
+                  <a href="{{route('user.list')}}" class="menu-link">
+                    <div data-i18n="Connections">Users List</div>
                   </a>
                 </li>
 
@@ -333,6 +337,16 @@
                         <span class="align-middle" id="status"><b></b></span>
                       </a>
                     </li>
+                     {{-- <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        @if ($user->isOnline())
+                        <span class="align-middle text-primary" id="">Online</span>
+                        @else
+                        <span class="align-middle text-danger" id="">Offline</span>
+                        @endif
+                      </a>
+                    </li>  --}}
 
                     <li>
                       <a class="dropdown-item" href="#">
@@ -436,6 +450,9 @@ class="btn btn-danger btn-buy-now"
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
+
+<!---Toaster.js Cdn link----->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
 

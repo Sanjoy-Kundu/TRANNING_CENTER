@@ -13,6 +13,9 @@
             <div class="row row-bordered g-0">
                 <h4 class="text-center p-2"><strong>All Course lists</strong></h4>
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
+                    @if (Session('message'))
+                        <div class="alert alert-success">Course Deleted Successfully</div>
+                    @endif
                 <table class="table table-bordered border-primary" id="example">
                   <thead>
                     <tr>
@@ -50,7 +53,7 @@
 
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                <button type="button" class="btn btn-danger">DELETE</button>
+                                <button type="button" class="btn btn-danger"><a href="{{route('course.delete', $course->id)}}" class="text-white">DELETE</a></button>
                                 <button type="button" class="btn btn-info"><a href="{{route('course.edit', $course->id)}}" class="text-white">EDIT</a></button>
                                 <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('course.view', $course->id)}}">View</a></button>
                               </div>
@@ -75,11 +78,12 @@
       </div>
 
     </div>
+    @if (Session::has('message'))
     <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
+        toastr.success("{{Session::get('message')}}");
     </script>
+
+    @endif
     <!-- / Content -->
 
 

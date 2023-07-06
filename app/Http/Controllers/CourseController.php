@@ -200,6 +200,17 @@ class CourseController extends Controller
     //    return back()->with('success', 'Course Updated Successfully');
     // }
 
+
+
+
+    /*
+    *Delete the specified course
+    */
+        public function delete($id){
+            Course::find($id)->delete();
+            return back()->with('message', 'Course Deleted Successfully');
+        }
+
     /**
      * Remove the specified resource from storage.
      */
