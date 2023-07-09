@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddUserController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
@@ -30,7 +31,15 @@ Route::get('/', [FrontendController::class, 'index']);
 
 Route::get('/dashboard', [BackendController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
+
 Route::get('/user/list', [UserController::class, 'index'])->name('user.list');
+Route::get('user/add', [UserController::class, "create"])->name('user.add');
+Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+Route::post('user/delete', [UserController::class, 'user_multiple_deter'])->name('user.delete');
+
+
 
 
 Route::get('/category', [CategoryController::class, 'create'])->name('category');

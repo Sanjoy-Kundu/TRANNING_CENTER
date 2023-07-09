@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -16,12 +17,20 @@ class UserController extends Controller
         return view('backend.users.index', compact('users'));
     }
 
+
+    public function user_multiple_deter(Request $request){
+//print_r($request->ids);
+        $ids = $request->ids;
+        User::whereIn('id', $ids)->delete();
+        return back()->withSuccess("Multiple Data Deleted Successfully");
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('backend.users.create');
     }
 
     /**
@@ -29,7 +38,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'role' => 'required'
+       ],[
+        'name.required' => "User name is required",
+        'email.required' => "User email is required",
+        'role.required' => "Select One first",
+       ]);
+
+        $generatePassword =  Str::upper(Str::random(8));
+       User::insert([
+        'name' => $request ->name,
+        'email' => $request ->email,
+        'password' => bcrypt($generatePassword),
+        'role' => $request ->role,
+       ]);
+       return $generatePassword; //NIN4KIS7 == raton data
     }
 
     /**

@@ -1,14 +1,7 @@
 
 <!DOCTYPE html>
 
-<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="{{asset('assets/backend')}}/"
-  data-template="vertical-menu-template-free"
->
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -217,21 +210,17 @@
             </li>
 
             <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <a href="" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">About</div>
+                <div data-i18n="Misc">Admin Corner</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="notices.html" class="menu-link">
-                    <div data-i18n="Error">Notice</div>
+                  <a href="{{route('user.add')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Add</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="about_info.html" class="menu-link">
-                    <div data-i18n="Under Maintenance">About Info</div>
-                  </a>
-                </li>
+
               </ul>
             </li>
             <!-- Components -->
@@ -334,7 +323,7 @@
                     <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle" id="status"><b></b></span>
+                        <span class="align-middle" id="status"><b></b></span> <!----check online--->
                       </a>
                     </li>
                      {{-- <li>
@@ -346,7 +335,7 @@
                         <span class="align-middle text-danger" id="">Offline</span>
                         @endif
                       </a>
-                    </li>  --}}
+                    </li> --}}
 
                     <li>
                       <a class="dropdown-item" href="#">
