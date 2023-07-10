@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AccountCreation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+
 
 class UserController extends Controller
 {
@@ -55,7 +58,18 @@ class UserController extends Controller
         'password' => bcrypt($generatePassword),
         'role' => $request ->role,
        ]);
-       return $generatePassword; //NIN4KIS7 == raton data
+       //return $generatePassword; //NIN4KIS7 == raton data
+
+       $info = [
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $generatePassword,
+        'role' => $request->role,
+       ];
+
+       Mail::to($request->email)->send(new AccountCreation($info));
+      return back()->with('success', 'Account creation successfully');
+
     }
 
     /**
