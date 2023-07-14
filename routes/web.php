@@ -54,6 +54,8 @@ Route::get('course/view/{id}', [CourseController::class, 'show'])->name('course.
 Route::get('course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
 Route::post('course/update/{id}', [CourseController::class, 'update'])->name('course.update');
 Route::get('course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
+Route::get('course/restore/{id}', [CourseController::class, 'restore'])->name('course.restore');
+Route::get('course/permanent/delete/{id}', [CourseController::class, 'permanent_delete'])->name('course.permanent.delete');
 
 
 

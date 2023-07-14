@@ -419,6 +419,7 @@ class="btn btn-danger btn-buy-now"
 
 
 <script src="{{asset('assets')}}/custom.js"></script>
+<script src="{{asset('assets')}}/customdatatable.js"></script>
 <script src="{{asset('assets/backend')}}/vendor/libs/jquery/jquery.js"></script>
 <script src="{{asset('assets/backend')}}/vendor/libs/popper/popper.js"></script>
 <script src="{{asset('assets/backend')}}/vendor/js/bootstrap.js"></script>

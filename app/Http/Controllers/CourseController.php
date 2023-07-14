@@ -19,7 +19,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        return view('backend.course.index', compact('courses'));
+        $trashedCourse = Course::onlyTrashed()->latest()->get();
+        return view('backend.course.index', compact('courses', 'trashedCourse'));
     }
 
     /**
@@ -208,6 +209,20 @@ class CourseController extends Controller
         public function delete($id){
             Course::find($id)->delete();
             return back()->with('message', 'Course Deleted Successfully');
+        }
+
+
+
+        public function restore($id){
+            Course::onlyTrashed()->find($id)->restore();
+            return back()->withSuccess('Course Restore Successfully');
+        }
+
+
+
+        public function permanent_delete($id){
+          Course::onlyTrashed()->find($id)->forceDelete();
+          return back()->withSuccess('Course Permanent deleted Successfully');
         }
 
     /**
