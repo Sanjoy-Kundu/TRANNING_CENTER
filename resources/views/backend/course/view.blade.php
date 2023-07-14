@@ -24,6 +24,10 @@
                       <td>{{$singleInfo->course_title}}</td>
                     </tr>
                     <tr>
+                      <th scope="col">Course Category</th>
+                      <td>{{$singleInfo->relationWithCategory->category_name}}</td>
+                    </tr>
+                    <tr>
                       <th scope="col">Course Duration</th>
                       <td>{{$singleInfo->course_duration}} Months</td>
                     </tr>

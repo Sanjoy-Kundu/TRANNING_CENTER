@@ -37,7 +37,10 @@
     <link rel="stylesheet" href="{{asset('assets/backend')}}/css/demo.css" />
 
        <!--DATA TABLES--->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+       <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+       <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('assets/backend')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -215,9 +218,9 @@
                 <div data-i18n="Misc">Admin Corner</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{request()->is('user/add') ? 'active' : ' ' }}">
                   <a href="{{route('user.add')}}" class="menu-link">
-                    <div data-i18n="Under Maintenance">Add</div>
+                    <div data-i18n="Under Maintenance">Add User</div>
                   </a>
                 </li>
 
@@ -436,8 +439,13 @@ class="btn btn-danger btn-buy-now"
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+{{-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> --}}
+{{-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> --}}
+{{-- <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script> --}}
+
 
 
 <!---Toaster.js Cdn link----->

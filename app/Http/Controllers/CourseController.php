@@ -39,7 +39,7 @@ class CourseController extends Controller
     {
 
         $request->validate([
-            "course_title" => "required ||unique:courses,course_title",
+            "course_title" => "required",
             "course_price" => "required",
             "course_duration" => "required",
             "course_description" => "required",
@@ -47,7 +47,6 @@ class CourseController extends Controller
              "total_seats" => "required",
         ],[
             "course_title.required" => "Course Title is required",
-            "course_title.unique" => "Course Name already taken",
             "course_price.required" => "Course Price is required",
             "course_duration.required" => "Course Duration is required",
             "course_image.required" => "Course Image is required",
@@ -157,7 +156,7 @@ class CourseController extends Controller
 
 
 
-       return back();
+       return back()->withSuccess('Course Updated Successfully');
     }
 
 

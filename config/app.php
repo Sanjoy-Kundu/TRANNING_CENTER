@@ -187,6 +187,8 @@ return [
         // 'Example' => App\Facades\Example::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+
+
     ])->toArray(),
 
 ];

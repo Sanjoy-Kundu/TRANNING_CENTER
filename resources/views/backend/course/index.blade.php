@@ -16,12 +16,13 @@
                     @if (Session('message'))
                         <div class="alert alert-success">Course Deleted Successfully</div>
                     @endif
-                <table class="table table-bordered border-primary" id="example">
+                <table class="table table-striped" id="myTable" style="width:100%">
                   <thead>
                     <tr>
                       <th scope="col">DELETE</th>
                       <th scope="col">Serial No</th>
                       <th scope="col">Course Name</th>
+                      <th scope="col">Course Category</th>
                       <th scope="col">Course Price</th>
                       <th scope="col">Course Seats</th>
                       <th scope="col">Course Duration</th>
@@ -40,7 +41,8 @@
                             </td>
                             <th scope="row">{{$loop->index+1}}</th>
                             <td>{{$course->course_title}}</td>
-                            <td>{{$course->course_price}}</td>
+                            <td>{{$course->relationWithCategory->category_name}}</td>
+                            <td>{{$course->course_price}} BDT</td>
                             <td>{{$course->total_seats}}</td>
                             <td>{{$course->course_duration}} Months</td>
                             <td align="center">
@@ -65,26 +67,33 @@
                             <td colspan="8" align="center">No Course Uploaded Yet</td>
                           </tr>
                     @endif
-
-
                   </tbody>
                 </table>
+                <button class="btn btn-info">All Deleted Data List</button>
               </div>
             </div>
           </div>
         </div>
         <!--/ Total Revenue -->
-
       </div>
 
     </div>
-    @if (Session::has('message'))
+
+    <script>
+        $(document).ready(function(){
+            new DataTable('#myTable');
+        })
+    </script>
+
+
+
+    {{-- @if (Session::has('message'))
     <script>
         toastr.success("{{Session::get('message')}}");
     </script>
 
     @endif
-    <!-- / Content -->
+    <!-- / Content --> --}}
 
 
 @endsection

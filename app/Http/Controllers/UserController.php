@@ -9,15 +9,20 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 
 
+
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = User::all();
         return view('backend.users.index', compact('users'));
+        // $users = User::where('role', $request->input('role'))->get();
+        // return view('backend.users.index', compact('users'));
+
+
     }
 
 
