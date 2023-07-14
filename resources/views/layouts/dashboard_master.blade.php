@@ -189,6 +189,11 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
+                  <a href="{{route('category.list')}}" class="menu-link">
+                    <div data-i18n="Account">Category list</div>
+                  </a>
+                </li>
+                <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
                   <a href="{{route('course.list')}}" class="menu-link">
                     <div data-i18n="Account">Course list</div>
                   </a>

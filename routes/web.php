@@ -43,7 +43,10 @@ Route::post('user/delete', [UserController::class, 'user_multiple_deter'])->name
 
 
 Route::get('/category', [CategoryController::class, 'create'])->name('category');
+Route::get('category/list', [CategoryController::class, 'index'])->name('category.list');
 Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::get('category/view/{id}', [CategoryController::class, 'show'])->name('category.view');
 
 
 

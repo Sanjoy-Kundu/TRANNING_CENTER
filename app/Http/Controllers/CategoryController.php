@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('backend.category.index', compact('categories'));
     }
 
     /**
@@ -61,17 +62,19 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category_details = Category::find($id);
+        return view('backend.category.view', compact('category_details'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
-    {
+    public function edit($id){
         //
+        $singleCategory =  Category::find($id);
+        return view('backend.category.edit', compact('singleCategory'));
     }
 
     /**

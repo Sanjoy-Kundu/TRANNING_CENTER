@@ -3,5 +3,10 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    new DataTable('#retore_course');
+    new DataTable('#restore_course');
+})
+
+//category
+$(document).ready(function(){
+    new DataTable('#category_table');
 })
