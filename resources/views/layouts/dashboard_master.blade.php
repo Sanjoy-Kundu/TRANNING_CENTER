@@ -188,7 +188,7 @@
                 <div data-i18n="Account Settings">All Uploaded List</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
+                <li class="menu-item {{(request()->is('category/list')) ? 'active' : ' '}}">
                   <a href="{{route('category.list')}}" class="menu-link">
                     <div data-i18n="Account">Category list</div>
                   </a>

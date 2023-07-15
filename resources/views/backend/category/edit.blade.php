@@ -16,7 +16,7 @@
                 <div class="row row-bordered g-0">
                     <h4 class="text-center p-2"><strong>Upload Your Category</strong></h4>
                   <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{{route('category.update', $singleCategory->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label"><b class="fs-5">Category Name</b></label>

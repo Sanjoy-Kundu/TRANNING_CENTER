@@ -19,7 +19,7 @@
                 @endif
 
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-
+                    @if ($categories->count() > 0)
                     <table id="category_table" class="display" style="width:100%">
                         <thead>
                           <tr>
@@ -35,7 +35,7 @@
                               <tr>
                                   <th scope="row">{{$loop->index+1}}</th>
                                   <td>{{$category->category_name}}</td>
-                                  <td>
+                                  <td align="center">
                                     @if ($category->category_image)
                                        <img src="{{asset('uploads/category')}}/{{$category->category_image}}" class="img-thumbnail rounded-sm w-25 mx-auto" alt="">
                                     @else
@@ -44,7 +44,7 @@
                                   </td>
                                   <td>
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                      <button type="button" class="btn btn-danger">DELETE</button>
+                                      <button type="button" class="btn btn-danger"><a href="{{route('category.delete', $category->id)}}" class="text-decoration-none text-white">DELETE</a></button>
                                       <button type="button" class="btn btn-info"><a href="{{route('category.edit', $category->id)}}" class="text-white">EDIT</a></button>
                                       <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('category.view', $category->id)}}">View</a></button>
                                     </div>
@@ -57,8 +57,16 @@
                                 </tr>
                           @endif
                         </tbody>
-                      </table>
-                </form>
+                 </table>
+                    @else
+                        <table class="table table-border">
+                            <tr>
+                                <td align="center" class="text-danger">No Category Uploaded Yet</td>
+                            </tr>
+                        </table>
+                    @endif
+
+
 
               </div>
             </div>

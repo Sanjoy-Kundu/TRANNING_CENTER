@@ -80,16 +80,38 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+
+        Category::find($id)->update([
+            'category_name' => $request->category_name,
+            'created_at' => Carbon::now()
+        ]);
+
+
+        if($request->hasFile('category_image')){
+            $db_category_img = Category::find($id)->category_image;
+            if($db_category_img != NULL){
+                unlink(public_path('uploads/category/'.$db_category_img));
+            }
+            $update_image = 'update_category_img-'.Str::lower(Str::random(20)).".".$request->file("category_image")->extension();
+            $path = 'uploads/category/'.$update_image;
+            Image::make($request->file("category_image"))->resize(400, 400)->save($path);
+
+            Category::find($id)->update([
+                'category_image' => $update_image
+            ]);
+        }
+
+        return back()->with('success', 'Category Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function delete($id)
     {
-        //
+        Category::find($id)->delete();
+        return back()->withSuccess('Category Deleted Successfully');
     }
 }
