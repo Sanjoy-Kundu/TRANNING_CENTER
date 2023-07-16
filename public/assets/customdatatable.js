@@ -10,3 +10,13 @@ $(document).ready(function(){
 $(document).ready(function(){
     new DataTable('#category_table');
 })
+
+
+//trainers
+$(document).ready(function(){
+    new DataTable('#trainer_list');
+})
+//partners
+$(document).ready(function(){
+    new DataTable('#partner_list');
+})

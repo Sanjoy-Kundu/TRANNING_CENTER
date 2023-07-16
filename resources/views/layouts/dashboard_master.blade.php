@@ -203,6 +203,11 @@
                     <div data-i18n="Notifications">Trainers List</div>
                   </a>
                 </li>
+                <li class="menu-item {{(request()->is('partner/list')) ? 'active' : ' '}}">
+                  <a href="{{route('partner.list')}}" class="menu-link">
+                    <div data-i18n="Notifications">Partners List</div>
+                  </a>
+                </li>
                 <li class="menu-item {{request()->is('success/student/list') ? 'active' : ' '}}">
                   <a href="{{route('success.student.list')}}" class="menu-link">
                     <div data-i18n="Connections">Students List</div>
