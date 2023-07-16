@@ -38,6 +38,7 @@ Route::get('/user/list', [UserController::class, 'index'])->name('user.list');
 Route::get('user/add', [UserController::class, "create"])->name('user.add');
 Route::post('user/store', [UserController::class, 'store'])->name('user.store');
 Route::post('user/delete', [UserController::class, 'user_multiple_deter'])->name('user.delete');
+Route::get('user/pending/post/list', [UserController::class, 'pending_list'])->name('user.pending.post.list');
 
 
 
@@ -61,6 +62,8 @@ Route::post('course/update/{id}', [CourseController::class, 'update'])->name('co
 Route::get('course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
 Route::get('course/restore/{id}', [CourseController::class, 'restore'])->name('course.restore');
 Route::get('course/permanent/delete/{id}', [CourseController::class, 'permanent_delete'])->name('course.permanent.delete');
+Route::get('course/approve/form/{id}', [CourseController::class, 'approve_form'])->name('course.approve.form');
+Route::post('course/approve/store/{id}', [CourseController::class, 'approve_store'])->name('course.approve.store');
 
 
 

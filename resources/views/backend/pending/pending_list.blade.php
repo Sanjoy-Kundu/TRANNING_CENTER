@@ -11,10 +11,10 @@
         <div class="col-12 col-lg-9 order-2 order-md-3 order-lg-2 mb-4 mx-auto">
           <div class="card">
             <div class="row row-bordered g-0">
-                @if ($courses->count() >0)
-                <h4 class="text-center p-2"><strong>All Course lists ({{$courses->count()}})</strong></h4>
+                @if ($pendingCourses->count() >0)
+                <h4 class="text-center p-2"><strong>All Pending Course lists ({{$pendingCourses->count()}})</strong></h4>
                 @else
-                <h4 class="text-center p-2"><strong>All Course lists</strong></h4>
+                <h4 class="text-center p-2"><strong>All Pending Course lists(0)</strong></h4>
                 @endif
 
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
@@ -22,7 +22,7 @@
                         <div class="alert alert-success">Course Deleted Successfully</div>
                     @endif
 
-                    @if ($courses->count() >0)
+                    @if ($pendingCourses->count() >0)
                     <table class="table table-border" id="myTable" style="width:100%">
                         <thead>
                           <tr>
@@ -31,16 +31,13 @@
                             <th scope="col">Status</th>
                             <th scope="col">Course Name</th>
                             <th scope="col">Course Category</th>
-                            <th scope="col">Course Price</th>
-                            <th scope="col">Course Seats</th>
-                            <th scope="col">Course Duration</th>
                             <th scope="col">Image</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @if ($courses->count() > 0)
-                              @foreach ($courses as $course )
+                          @if ($pendingCourses->count() > 0)
+                              @foreach ($pendingCourses as $course )
                               <tr>
                                   {{-- <td>
                                       <form action="">
@@ -51,15 +48,13 @@
                                   @if ($course->status == 'pending')
                                   {{-- <td>{{$course->status}}</td> --}}
                                   <td>  <span class="badge bg-warning">{{$course->status}}</span></td>
+
                                   @else
-                                  <td>  <span class="badge bg-success">{{$course->status}}</span></td>
+
                                   @endif
 
                                   <td>{{$course->course_title}}</td>
                                   <td>{{$course->relationWithCategory->category_name}}</td>
-                                  <td>{{$course->course_price}} BDT</td>
-                                  <td>{{$course->total_seats}}</td>
-                                  <td>{{$course->course_duration}} Months</td>
                                   <td align="center">
                                       @if ($course->course_image)
                                       <img src="{{asset('uploads/course')}}/{{$course->course_image}}" alt="" class="rounded" style="width: 100px; height:100px">
@@ -70,9 +65,9 @@
 
                                       <td>
                                           <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                              <button type="button" class="btn btn-danger"><a href="{{route('course.delete', $course->id)}}" class="text-white">DELETE</a></button>
-                                              <button type="button" class="btn btn-info"><a href="{{route('course.edit', $course->id)}}" class="text-white">EDIT</a></button>
-                                              <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('course.view', $course->id)}}">View</a></button>
+                                              <button type="button" class="btn btn-danger"><a href="" class="text-white">Reject</a></button>
+                                              <button type="button" class="btn btn-info"><a href="{{route('course.approve.form', $course->id)}}" class="text-white">Approve</a></button>
+                                              <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
                                             </div>
                                         </td>
                                 </tr>
@@ -98,7 +93,7 @@
 
 
 
-          <div class="card mt-5">
+          {{-- <div class="card mt-5">
             <div class="row row-bordered g-0">
                 @if ($trashedCourse->count() >0)
                 <h4 class="text-center p-2"><strong>All Trashed Course lists ({{$trashedCourse->count()}})</strong></h4>
@@ -167,7 +162,7 @@
 
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
         </div>

@@ -55,6 +55,10 @@
                                 @endif</h4>
                         </td>
                       </tr>
+                      <tr>
+                        <th scope="col"><h4>Trainer Description</h4></th>
+                        <td><h4>{{$singleTrainer->trainer_description}} Taka</h4></td>
+                      </tr>
 
 
 

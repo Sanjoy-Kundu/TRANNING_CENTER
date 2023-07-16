@@ -193,11 +193,20 @@
                     <div data-i18n="Account">Category list</div>
                   </a>
                 </li>
+                @if (Auth::user()->role == 'admin')
                 <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
-                  <a href="{{route('course.list')}}" class="menu-link">
-                    <div data-i18n="Account">Course list</div>
-                  </a>
-                </li>
+                    <a href="{{route('course.list')}}" class="menu-link">
+                      <div data-i18n="Account">Course list</div>
+                    </a>
+                  </li>
+                @else
+                <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
+                    <a href="{{route('course.list')}}" class="menu-link">
+                      <div data-i18n="Account">Your Course list</div>
+                    </a>
+                  </li>
+                @endif
+
                 <li class="menu-item {{(request()->is('trainer/list')) ? 'active' : ' '}}">
                   <a href="{{route('trainer.list')}}" class="menu-link">
                     <div data-i18n="Notifications">Trainers List</div>
@@ -222,20 +231,29 @@
               </ul>
             </li>
 
+            @if (Auth::user()->role == 'admin')
             <li class="menu-item">
-              <a href="" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">Admin Corner</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item {{request()->is('user/add') ? 'active' : ' ' }}">
-                  <a href="{{route('user.add')}}" class="menu-link">
-                    <div data-i18n="Under Maintenance">Add User</div>
-                  </a>
-                </li>
+                <a href="" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                  <div data-i18n="Misc">Admin Corner</div>
+                </a>
+                <ul class="menu-sub">
+                  <li class="menu-item {{request()->is('user/add') ? 'active' : ' ' }}">
+                    <a href="{{route('user.add')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Add User</div>
+                    </a>
+                  </li>
 
-              </ul>
-            </li>
+                  <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
+                    <a href="{{route('user.pending.post.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Pending Post</div>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+            @endif
+
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
             <!-- Cards -->

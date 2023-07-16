@@ -18,7 +18,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        //$courses = Course::all();
+        $courses = Course::where('user_id', Auth()->user()->id)->latest()->get();
         $trashedCourse = Course::onlyTrashed()->latest()->get();
         return view('backend.course.index', compact('courses', 'trashedCourse'));
     }
@@ -38,6 +39,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+
 
         $request->validate([
             "course_title" => "required",
@@ -66,6 +68,14 @@ class CourseController extends Controller
             //discount  check end
 
 
+            if(Auth::user()->role == 'admin'){
+                $status = 'approve';
+            }else{
+                 $status = 'pending';
+            }
+
+
+
 
         $courseId = Course::insertGetId([
             'user_id' => Auth::user()->id,
@@ -77,6 +87,7 @@ class CourseController extends Controller
             'discount' => $discount,
             'total_seats' => $request->total_seats,
             'discounted_price' => $discounted_price,
+            'status' => $status,
             'course_description' => $request->course_description,
             'course_image' => $request->course_image,
             'created_at' => Carbon::now(),
@@ -231,5 +242,24 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+    }
+
+
+
+
+    /**
+     * approve form
+     */
+    public function approve_form($id){
+        $pendingCourse =  Course::find($id);
+        return view('backend.pending.approve_form', compact('pendingCourse'));
+    }
+
+
+    public function approve_store(Request $request, $id){
+        Course::find($id)->update([
+            'status' => $request->status
+        ]);
+        return back()->with('success', 'Course Approve Successfully');
     }
 }

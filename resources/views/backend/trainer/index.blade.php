@@ -45,7 +45,8 @@
                               <th scope="row">{{$loop->index+1}}</th>
                               <td>{{$trainer->trainer_name}}</td>
                               <td>{{$trainer->trainer_title}}</td>
-                              <td>{{$trainer->trainer_description}}</td>
+                              {{-- <td>{{$trainer->trainer_description}}</td> --}}
+                              <td>{{Str::words($trainer->trainer_description, 5, ' ...')}}</td>
                               <td>{{$trainer->trainer_salary}}</td>
                               <td align="center">
                                   @if ($trainer->trainer_image)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\AccountCreation;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -76,6 +77,18 @@ class UserController extends Controller
       return back()->with('success', 'Account creation successfully');
 
     }
+
+
+
+
+
+    public function pending_list(){
+        $pendingCourses =  Course::where('status', 'pending')->latest()->get();
+        return view('backend.pending.pending_list', compact('pendingCourses'));
+    }
+
+
+
 
     /**
      * Display the specified resource.
