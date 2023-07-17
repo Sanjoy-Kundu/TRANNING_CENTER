@@ -248,7 +248,7 @@ class CourseController extends Controller
 
 
     /**
-     * approve form
+     * ===============approve form system start============
      */
     public function approve_form($id){
         $pendingCourse =  Course::find($id);
@@ -262,13 +262,22 @@ class CourseController extends Controller
         ]);
         return back()->with('success', 'Course Approve Successfully');
     }
+    /*
+    * ===============approve form system end ============
+   */
 
 
+
+
+
+
+    /**
+     * ===============pending form system start============
+     */
     public function pending_form($id){
         $pendingCourse =  Course::find($id);
         return view('backend.pending.pending_form', compact('pendingCourse'));
     }
-
 
     public function pending_store(Request $request, $id){
         Course::find($id)->update([
@@ -276,5 +285,29 @@ class CourseController extends Controller
         ]);
         return back()->withSuccess('Your Post Updated Successfully');
     }
+ /**
+     * ===============pending form system end============
+ */
 
+
+
+
+
+
+ /**
+     * ===============reject form system start============
+ */
+    public function reject_course($id){
+
+       $rejectCourse =  Course::find($id);
+       return view('backend.pending.rejected_form', compact('rejectCourse'));
+    }
+
+
+    public function reject_store(Request $request, $id){
+        Course::find($id)->update([
+            'reject' => $request->reject
+        ]);
+        return back()->withSuccess('Your Course Updated Successfully');
+    }
 }

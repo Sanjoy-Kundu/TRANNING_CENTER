@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('total_seats');
             $table->integer('discounted_price');
             $table->string('status');
+            $table->string('reject')->default('no');
             $table->longText('course_description');
             $table->longText('course_image');
             $table->softDeletes();

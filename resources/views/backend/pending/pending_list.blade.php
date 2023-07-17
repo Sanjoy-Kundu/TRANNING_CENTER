@@ -65,7 +65,7 @@
 
                                       <td>
                                           <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                              <button type="button" class="btn btn-danger"><a href="" class="text-white">Reject</a></button>
+                                              <button type="button" class="btn btn-danger"><a href="{{route('course.pending.reject.form', $course->id)}}" class="text-white">Reject</a></button>
                                               <button type="button" class="btn btn-info"><a href="{{route('course.approve.form', $course->id)}}" class="text-white">Approve</a></button>
                                               <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
                                             </div>
