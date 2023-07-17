@@ -262,4 +262,19 @@ class CourseController extends Controller
         ]);
         return back()->with('success', 'Course Approve Successfully');
     }
+
+
+    public function pending_form($id){
+        $pendingCourse =  Course::find($id);
+        return view('backend.pending.pending_form', compact('pendingCourse'));
+    }
+
+
+    public function pending_store(Request $request, $id){
+        Course::find($id)->update([
+            'status' => $request->status
+        ]);
+        return back()->withSuccess('Your Post Updated Successfully');
+    }
+
 }

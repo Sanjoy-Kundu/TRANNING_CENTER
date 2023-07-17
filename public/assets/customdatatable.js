@@ -20,3 +20,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     new DataTable('#partner_list');
 })
+//partners
+$(document).ready(function(){
+    new DataTable('#approveCouse');
+})

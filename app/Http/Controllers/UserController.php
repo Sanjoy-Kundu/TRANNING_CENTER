@@ -88,6 +88,12 @@ class UserController extends Controller
     }
 
 
+    //approve post
+    public function approve_list(){
+         $approveCourses = Course::where('status', 'approve')->latest()->get();
+         return view('backend.pending.approve_list', compact('approveCourses'));
+    }
+
 
 
     /**

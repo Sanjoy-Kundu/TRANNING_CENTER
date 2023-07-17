@@ -11,19 +11,19 @@
         <div class="col-12 col-lg-9 order-2 order-md-3 order-lg-2 mb-4 mx-auto">
           <div class="card">
             <div class="row row-bordered g-0">
-                @if ($pendingCourses->count() >0)
-                <h4 class="text-center p-2"><strong>All Pending Course lists ({{$pendingCourses->count()}})</strong></h4>
+                @if ($approveCourses->count() >0)
+                <h4 class="text-center p-2"><strong>All Approve Course lists ({{$approveCourses->count()}})</strong></h4>
                 @else
-                <h4 class="text-center p-2"><strong>All Pending Course lists(0)</strong></h4>
+                <h4 class="text-center p-2"><strong>All Approve Course lists(0)</strong></h4>
                 @endif
 
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-                    @if (Session('message'))
-                        <div class="alert alert-success">Course Deleted Successfully</div>
+                    @if (session('success'))
+                        <div class="alert alert-success">{{session('success')}}</div>
                     @endif
 
-                    @if ($pendingCourses->count() >0)
-                    <table class="table table-border" id="myTable" style="width:100%">
+                    @if ($approveCourses->count() >0)
+                    <table class="table table-border" id="approveCouse" style="width:100%">
                         <thead>
                           <tr>
                             {{-- <th scope="col">DELETE</th> --}}
@@ -36,8 +36,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @if ($pendingCourses->count() > 0)
-                              @foreach ($pendingCourses as $course )
+                          @if ($approveCourses->count() > 0)
+                              @foreach ($approveCourses as $course )
                               <tr>
                                   {{-- <td>
                                       <form action="">
@@ -45,11 +45,9 @@
                                       </form>
                                   </td> --}}
                                   <td scope="row">{{$loop->index+1}}</td>
-                                  @if ($course->status == 'pending')
+                                  @if ($course->status == 'approve')
                                   {{-- <td>{{$course->status}}</td> --}}
                                   <td>  <span class="badge bg-warning">{{$course->status}}</span></td>
-
-                                  @else
 
                                   @endif
 
@@ -65,8 +63,8 @@
 
                                       <td>
                                           <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                              <button type="button" class="btn btn-danger"><a href="" class="text-white">Reject</a></button>
-                                              <button type="button" class="btn btn-info"><a href="{{route('course.approve.form', $course->id)}}" class="text-white">Approve</a></button>
+                                              <button type="button" class="btn btn-danger"><a href="{{route('course.approve.pending.form', $course->id)}}" class="text-white">Pending</a></button>
+
                                               <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
                                             </div>
                                         </td>

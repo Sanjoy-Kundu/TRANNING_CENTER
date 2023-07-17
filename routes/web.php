@@ -39,6 +39,7 @@ Route::get('user/add', [UserController::class, "create"])->name('user.add');
 Route::post('user/store', [UserController::class, 'store'])->name('user.store');
 Route::post('user/delete', [UserController::class, 'user_multiple_deter'])->name('user.delete');
 Route::get('user/pending/post/list', [UserController::class, 'pending_list'])->name('user.pending.post.list');
+Route::get('user/approve/post/list', [UserController::class, 'approve_list'])->name('user.approve.post.list');
 
 
 
@@ -64,6 +65,8 @@ Route::get('course/restore/{id}', [CourseController::class, 'restore'])->name('c
 Route::get('course/permanent/delete/{id}', [CourseController::class, 'permanent_delete'])->name('course.permanent.delete');
 Route::get('course/approve/form/{id}', [CourseController::class, 'approve_form'])->name('course.approve.form');
 Route::post('course/approve/store/{id}', [CourseController::class, 'approve_store'])->name('course.approve.store');
+Route::get('course/approve/pending/form/{id}', [CourseController::class, 'pending_form'])->name('course.approve.pending.form');
+Route::post('course/approve/pending/store/{id}', [CourseController::class, 'pending_store'])->name('course.approve.pending.store');
 
 
 

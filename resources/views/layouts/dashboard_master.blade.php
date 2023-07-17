@@ -249,6 +249,11 @@
                       <div data-i18n="Under Maintenance">Pending Post</div>
                     </a>
                   </li>
+                  <li class="menu-item {{request()->is('user/approve/post/list') ? 'active' : ' ' }}">
+                    <a href="{{route('user.approve.post.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Approve Post</div>
+                    </a>
+                  </li>
 
                 </ul>
               </li>
