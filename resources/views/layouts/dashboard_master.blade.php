@@ -152,21 +152,27 @@
                 <div data-i18n="Account Settings">Settings Corner</div>
               </a>
               <ul class="menu-sub">
+                @if (Auth::user()->role == 'admin')
                 <li class="menu-item {{(request()->is('category')) ? 'active' : ' '}}">
-                  <a href="{{route('category')}}" class="menu-link">
-                    <div data-i18n="Account">Upload Category</div>
-                  </a>
-                </li>
+                    <a href="{{route('category')}}" class="menu-link">
+                      <div data-i18n="Account">Upload Category</div>
+                    </a>
+                  </li>
+                @endif
+
                 <li class="menu-item {{(request()->is('course')) ? 'active' : ' '}}">
                   <a href="{{route('course')}}" class="menu-link ">
                     <div data-i18n="Account">Upload Course</div>
                   </a>
                 </li>
+                @if (Auth::user()->role == 'admin')
                 <li class="menu-item {{(request()->is('trainer')) ? 'active' : ' '}}">
-                  <a href="{{route('trainer')}}" class="menu-link">
-                    <div data-i18n="Notifications">Upload Trainers</div>
-                  </a>
-                </li>
+                    <a href="{{route('trainer')}}" class="menu-link">
+                      <div data-i18n="Notifications">Upload Trainers</div>
+                    </a>
+                  </li>
+
+
                 <li class="menu-item {{(request()->is('success/student')) ? 'active' : ' '}}">
                   <a href="{{route('success.student')}}" class="menu-link">
                     <div data-i18n="Connections">Upload Success Students</div>
@@ -177,7 +183,7 @@
                     <div data-i18n="Connections">Upload Partners</div>
                   </a>
                 </li>
-
+                @endif
               </ul>
             </li>
 
@@ -189,10 +195,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item {{(request()->is('category/list')) ? 'active' : ' '}}">
-                  <a href="{{route('category.list')}}" class="menu-link">
-                    <div data-i18n="Account">Category list</div>
-                  </a>
-                </li>
+                    <a href="{{route('category.list')}}" class="menu-link">
+                      <div data-i18n="Account">Category list</div>
+                    </a>
+                  </li>
+
+
                 @if (Auth::user()->role == 'admin')
                 <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
                     <a href="{{route('course.list')}}" class="menu-link">
@@ -222,11 +230,14 @@
                     <div data-i18n="Connections">Students List</div>
                   </a>
                 </li>
+                @if (Auth::user()->role == 'admin')
                 <li class="menu-item {{(request()->is('user/list')) ? 'active' : ' '}}">
-                  <a href="{{route('user.list')}}" class="menu-link">
-                    <div data-i18n="Connections">Users List</div>
-                  </a>
-                </li>
+                    <a href="{{route('user.list')}}" class="menu-link">
+                      <div data-i18n="Connections">Users List</div>
+                    </a>
+                  </li>
+                @endif
+
 
               </ul>
             </li>

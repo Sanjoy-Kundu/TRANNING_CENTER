@@ -43,11 +43,18 @@
                                     @endif
                                   </td>
                                   <td>
+                                    @if (Auth::user()->role == 'admin')
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                      <button type="button" class="btn btn-danger"><a href="{{route('category.delete', $category->id)}}" class="text-decoration-none text-white">DELETE</a></button>
-                                      <button type="button" class="btn btn-info"><a href="{{route('category.edit', $category->id)}}" class="text-white">EDIT</a></button>
-                                      <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('category.view', $category->id)}}">View</a></button>
-                                    </div>
+                                        <button type="button" class="btn btn-danger"><a href="{{route('category.delete', $category->id)}}" class="text-decoration-none text-white">DELETE</a></button>
+                                        <button type="button" class="btn btn-info"><a href="{{route('category.edit', $category->id)}}" class="text-white">EDIT</a></button>
+                                        <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('category.view', $category->id)}}">View</a></button>
+                                      </div>
+                                    @else
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                                        <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('category.view', $category->id)}}">View</a></button>
+                                      </div>
+                                    @endif
+
                                   </td>
                                 </tr>
                               @endforeach
