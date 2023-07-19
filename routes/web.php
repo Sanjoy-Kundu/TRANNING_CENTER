@@ -69,6 +69,8 @@ Route::get('course/approve/pending/form/{id}', [CourseController::class, 'pendin
 Route::post('course/approve/pending/store/{id}', [CourseController::class, 'pending_store'])->name('course.approve.pending.store');
 Route::get('course/pending/reject/form/{id}', [CourseController::class, 'reject_course'])->name('course.pending.reject.form');
 Route::post('course/pending/reject/store/{id}', [CourseController::class, 'reject_store'])->name('course.pending.reject.store');
+Route::get('course/approve/view/{id}', [CourseController::class, 'approve_post_view'])->name('course.approve.view');
+Route::get('course/pending/post/view/{id}', [CourseController::class, 'pending_post_view'])->name('course.pending.post.view');
 
 
 

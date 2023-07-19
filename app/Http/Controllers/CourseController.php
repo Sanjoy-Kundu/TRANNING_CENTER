@@ -262,6 +262,11 @@ class CourseController extends Controller
         ]);
         return back()->with('success', 'Course Approve Successfully');
     }
+
+    public function approve_post_view($id){
+        $singleInfo = Course::find($id);
+        return view('backend.pending.approve_post_view',compact('singleInfo'));
+    }
     /*
     * ===============approve form system end ============
    */
@@ -284,6 +289,12 @@ class CourseController extends Controller
             'status' => $request->status
         ]);
         return back()->withSuccess('Your Post Updated Successfully');
+    }
+
+
+    public function pending_post_view($id){
+        $singleInfo = Course::find($id);
+        return view('backend.pending.pending_post_view', compact('singleInfo'));
     }
  /**
      * ===============pending form system end============
