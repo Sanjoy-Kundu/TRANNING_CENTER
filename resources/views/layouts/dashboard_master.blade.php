@@ -257,7 +257,7 @@
 
                   <li class="menu-item {{request()->is('user/all/post/list') ? 'active' : ' ' }}">
                     <a href="{{route('user.all.post.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">All Post List</div>
+                      <div data-i18n="Under Maintenance">All Course Post List</div>
                     </a>
                   </li>
                   <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
