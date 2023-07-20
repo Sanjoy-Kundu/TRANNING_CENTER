@@ -38,6 +38,7 @@ Route::get('/user/list', [UserController::class, 'index'])->name('user.list');
 Route::get('user/add', [UserController::class, "create"])->name('user.add');
 Route::post('user/store', [UserController::class, 'store'])->name('user.store');
 Route::post('user/delete', [UserController::class, 'user_multiple_deter'])->name('user.delete');
+Route::get('user/all/post/list', [UserController::class, 'all_course_post_list'])->name('user.all.post.list');
 Route::get('user/pending/post/list', [UserController::class, 'pending_list'])->name('user.pending.post.list');
 Route::get('user/approve/post/list', [UserController::class, 'approve_list'])->name('user.approve.post.list');
 

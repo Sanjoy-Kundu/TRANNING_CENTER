@@ -255,6 +255,11 @@
                     </a>
                   </li>
 
+                  <li class="menu-item {{request()->is('user/all/post/list') ? 'active' : ' ' }}">
+                    <a href="{{route('user.all.post.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">All Post List</div>
+                    </a>
+                  </li>
                   <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
                     <a href="{{route('user.pending.post.list')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Pending Post</div>
@@ -298,8 +303,27 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+
+
+
+
+                <div class="btn-group">
+                    {{-- <button type='button' class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bell text-primary" aria-hidden="true"></i>
+                    </button> --}}
+                    <button type="button" class="btn btn-primary position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bell text-white" aria-hidden="true"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          10
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Registration.... <sup class="text-danger">2</sup></a></li>
+                    </ul>
+                  </div>
               <!-- Search -->
-              <div class="navbar-nav align-items-center">
+              {{-- <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
                   <input
@@ -309,12 +333,14 @@
                     aria-label="Search..."
                   />
                 </div>
-              </div>
+              </div> --}}
               <!-- /Search -->
+
+
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
+                {{-- <li class="nav-item lh-1 me-3">
                   <a
                     class="github-button"
                     href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -324,7 +350,12 @@
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                     >Star</a
                   >
-                </li>
+                </li> --}}
+
+
+
+
+
 
 
 

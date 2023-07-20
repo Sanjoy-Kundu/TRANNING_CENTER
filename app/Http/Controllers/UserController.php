@@ -16,6 +16,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function all_course_post_list(){
+       $total_courses_posts = Course::all();
+       return view('backend.users.all_course_post_list', compact('total_courses_posts'));
+     }
+
+
+
     public function index(Request $request)
     {
         $users = User::all();
@@ -49,11 +57,12 @@ class UserController extends Controller
     {
        $request->validate([
         'name' => 'required',
-        'email' => 'required',
+        'email' => 'required || unique:users,email',
         'role' => 'required'
        ],[
         'name.required' => "User name is required",
         'email.required' => "User email is required",
+        'email.unique' => "User Email Already Taken",
         'role.required' => "Select One first",
        ]);
 
