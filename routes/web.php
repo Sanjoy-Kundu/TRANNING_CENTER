@@ -28,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('course/details/{id}', [FrontendController::class, 'course_details'])->name('course.details');
+
+
+
 
 Route::get('/dashboard', [BackendController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
