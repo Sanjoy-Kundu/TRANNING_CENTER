@@ -282,22 +282,26 @@
                   <div data-i18n="Misc">Notice Corner</div>
                 </a>
                 <ul class="menu-sub">
-                  <li class="menu-item {{request()->is('user/add') ? 'active' : ' ' }}">
-                    <a href="{{route('user.add')}}" class="menu-link">
+                  <li class="menu-item {{request()->is('notice/form') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.form')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Upload Notice</div>
                     </a>
                   </li>
 
-                  <li class="menu-item {{request()->is('user/all/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('user.all.post.list')}}" class="menu-link">
+                  <li class="menu-item {{request()->is('notice/all') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.all')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Your Notice List</div>
                     </a>
                   </li>
+
+
                   <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
                     <a href="{{route('user.pending.post.list')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">All Notice List</div>
                     </a>
                   </li>
+
+
                   <li class="menu-item {{request()->is('user/approve/post/list') ? 'active' : ' ' }}">
                     <a href="{{route('user.approve.post.list')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Your Approve Notice List</div>

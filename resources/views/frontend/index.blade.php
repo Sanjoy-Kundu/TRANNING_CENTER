@@ -8,6 +8,7 @@
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="1000">
          <img src="{{asset('assets/frontend')}}/img/course-3.jpg" class="d-block w-100" alt="...">
@@ -93,12 +94,12 @@
             <div class="row ">
           <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
-                  <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Notice</span></div>
-                  <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Admisssion Going On 24 december
+                  <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news logo"><span class="d-flex align-items-center ">&nbsp;Notice</span></div>
+                  <marquee class="news-scroll fs-3" behavior="scroll" direction="left"> <mark> {{$notice[0]->notice_description}}</mark>
                   </marquee>
-              </div>
-          </div>
-      </div>
+                </div>
+            </div>
+        </div>
           </div>
         </section>
       <!-- ============Marquee Section end =========-->

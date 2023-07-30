@@ -5,6 +5,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\OurpartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuccessStudentController;
@@ -100,6 +101,10 @@ Route::get('partner/list', [OurpartnerController::class, 'index'])->name('partne
 Route::get('partner/view/{id}', [OurpartnerController::class, 'show'])->name('partner.view');
 
 
+
+Route::get('notice/all', [NoticeController::class, 'index'])->name('notice.all');
+Route::get('notice/form', [NoticeController::class, 'create'])->name('notice.form');
+Route::post('notice/store', [NoticeController::class, 'store'])->name('notice.store');
 
 
 
