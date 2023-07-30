@@ -219,7 +219,6 @@
 
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="course-item">
-
                   <img src="{{asset('uploads/course')}}/{{$course->course_image}}" class="img-fluid" alt="...">
                   <div class="course-content">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -230,9 +229,7 @@
                     <h3>Course:<a href=""> {{$course->course_title}}</a></h3>
                     {{-- Str::limit('The quick brown fox jumps over the lazy dog', 20, ' (...)'); --}}
                     <h5><b>Descripiton</b>: {{Str::limit($course->course_description, 50, '...');}}</h5>
-
                     <div class="trainer d-flex justify-content-between align-items-center">
-
                       <div class="trainer-profile d-flex align-items-center">
                         <img src="{{asset('uploads/trainers')}}/{{$course->relationWithTrainers->trainer_image}}" class="img-fluid" alt="">
                         <span>Instructor: <strong>{{$course->relationWithTrainers->trainer_name}}</strong></span>
@@ -323,67 +320,31 @@
 
 
           <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            @foreach ($all_trainers as $trainer )
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-              <div class="member">
-                <img src="{{asset('assets/frontend')}}/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                <div class="member-content">
-                  <h4>Walter White</h4>
-                  <span>Web Development</span>
-                  <p>
-                    Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-                  </p>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                <div class="member">
+                    @if ($trainer->trainer_image)
+                    <img src="{{asset('uploads/trainers')}}/{{$trainer->trainer_image}}" class="img-fluid" alt="">
+                    @else
+                    <img src="{{asset('uploads/trainers/default.jpg')}}" class="img-fluid" alt="">
+                    @endif
+                  <div class="member-content">
+                    <h4>{{$trainer->trainer_name}}</h4>
+                    <span>{{$trainer->trainer_title}}</span>
+                    <p>{{Str::of($trainer->trainer_description)->limit(150)}} <a href="" class="text-primary">More</a></p>
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-              <div class="member">
-                <img src="{{asset('assets/frontend')}}/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                <div class="member-content">
-                  <h4>Sarah Jhinson</h4>
-                  <span>Marketing</span>
-                  <p>
-                    Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                  </p>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-              <div class="member">
-                <img src="{{asset('assets/frontend')}}/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                <div class="member-content">
-                  <h4>William Anderson</h4>
-                  <span>Content</span>
-                  <p>
-                    Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                  </p>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <button class="btn btn mx-auto mt-3" style="width: 150px; background-color: #63e791;"><a href="" class="text-white
-              text-decoration-none" >All Trainers</a></button>
+            @endforeach
           </div>
-
+          <button class="btn btn mx-auto mt-3" style="width: 150px; background-color: #63e791;"><a href="" class="text-white
+            text-decoration-none" >All Trainers</a></button>
         </div>
       </section>
       <!-- End Trainers Section -->
@@ -401,68 +362,53 @@
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="{{asset('assets/frontend')}}/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
-                <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+            @if ($all_success_students->count() > 0)
+            @foreach ($all_success_students as $success_student )
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
+                    @if ($success_student->student_image)
+                    <img src="{{asset('uploads/student_success')}}/{{$success_student->student_image}}" class="img-fluid" alt="">
+                    @else
+                    <img src="{{asset('uploads/student_success/default.jpg')}}" class="img-fluid" alt="">
+                    @endif
+                  <div class="member-content">
+                    <h4>{{$success_student->student_name}}</h4>
+                    <span>{{$success_student->student_title}}</span>
+                    <p> {{Str::of($success_student->student_story)->limit(150)}} <a href="" class="text-primary">Read More</a></p>
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            @endforeach
+            @else
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
+                    <img src="{{asset('uploads/student_success/default.jpg')}}" class="img-fluid" alt="">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="{{asset('assets/frontend')}}/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
-                <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <div class="member-content">
+                    <h4>Demo Name</h4>
+                    <span>Demo Title</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, ullam?</p>
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            @endif
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="{{asset('assets/frontend')}}/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
-                <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn mx-auto mt-3" style="width: 155px; background-color: #63e791;padding: 12px; font-size: 16px;font-weight: 500;">
+        </div>
+        <button class="btn btn mx-auto mt-3" style="width: 155px; background-color: #63e791;padding: 12px; font-size: 16px;font-weight: 500;">
             <a href="" class="text-white
             text-decoration-none" >All Studnet Story</a></button>
-        </div>
-
       </div>
     </section>
     <!--======Student Successfull Story ==========-->
@@ -554,82 +500,21 @@
                 <p>Our Partner</p>
               </div>
 
-
               <div class="row" data-aos="zoom-in" data-aos-delay="100">
-                <div class="col-lg-3 col-md-4">
-                  <div class="icon-box">
-                    <i class="ri-store-line" style="color: #ffbb2c;"></i>
-                    <h3><a href="">Lorem Ipsum</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                  <div class="icon-box">
-                    <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-                    <h3><a href="">Dolor Sitema</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                  <div class="icon-box">
-                    <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-                    <h3><a href="">Sed perspiciatis</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-                  <div class="icon-box">
-                    <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-                    <h3><a href="">Magni Dolores</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                    <h3><a href="">Nemo Enim</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-                    <h3><a href="">Eiusmod Tempor</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-                    <h3><a href="">Midela Teren</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                    <h3><a href="">Pira Neve</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-anchor-line" style="color: #b2904f;"></i>
-                    <h3><a href="">Dirada Pack</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-disc-line" style="color: #b20969;"></i>
-                    <h3><a href="">Moton Ideal</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-base-station-line" style="color: #ff5828;"></i>
-                    <h3><a href="">Verdo Park</a></h3>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                  <div class="icon-box">
-                    <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-                    <h3><a href="">Flavor Nivelanda</a></h3>
-                  </div>
-                </div>
-              </div>
+                @foreach ($all_partners as $partner)
+                    <div class="col-lg-3 col-md-4">
+                        <div class="icon-box">
+                            <img style="height: 70px; width:100px" src="{{asset('uploads/partners')}}/{{$partner->partner_image}}" alt="">
+                            <h3 style="margin-left: 5px">{{$partner->partner_name}}</h3>
+                        </div>
+                    </div>
+                @endforeach
 
+
+              </div>
+              <button class="btn btn mx-auto mt-3" style="width: 155px; background-color: #63e791;padding: 12px; font-size: 16px;font-weight: 500;">
+                <a href="" class="text-white
+                text-decoration-none" >All Group</a></button>
             </div>
           </section>
           <!-- End Features Section -->

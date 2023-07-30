@@ -275,6 +275,44 @@
               </li>
             @endif
 
+            <!---Notice Corner--->
+            <li class="menu-item">
+                <a href="" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                  <div data-i18n="Misc">Notice Corner</div>
+                </a>
+                <ul class="menu-sub">
+                  <li class="menu-item {{request()->is('user/add') ? 'active' : ' ' }}">
+                    <a href="{{route('user.add')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Upload Notice</div>
+                    </a>
+                  </li>
+
+                  <li class="menu-item {{request()->is('user/all/post/list') ? 'active' : ' ' }}">
+                    <a href="{{route('user.all.post.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Your Notice List</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
+                    <a href="{{route('user.pending.post.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">All Notice List</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('user/approve/post/list') ? 'active' : ' ' }}">
+                    <a href="{{route('user.approve.post.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Your Approve Notice List</div>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+            <!---Notice Corner--->
+
+
+
+
+
+
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
             <!-- Cards -->

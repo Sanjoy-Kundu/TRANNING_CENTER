@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("student_name");
             $table->string("student_title");
             $table->longText("student_story");
-            $table->string("student_image");
+            $table->string("student_image")->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
