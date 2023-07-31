@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('notice_name');
             $table->longText('notice_description');
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });

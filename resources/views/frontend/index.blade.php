@@ -43,62 +43,36 @@
   </section>
 
 
-
-    <!-- <section id="hero" class="d-flex justify-content-center align-items-center">
-  <div id="carouselExampleDark" class="carousel carousel-dark slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-    </section> -->
-    <!-- End Hero -->
-
     <main id="main">
 
       <!-- ============Marquee Section start =========-->
         <section id="news" class="about">
           <div class="container" data-aos="fade-up">
             <div class="row ">
-          <div class="col-md-12">
-              <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
-                  <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news logo"><span class="d-flex align-items-center ">&nbsp;Notice</span></div>
-                  <marquee class="news-scroll fs-3" behavior="scroll" direction="left"> <mark> {{$notice[0]->notice_description}}</mark>
-                  </marquee>
-                </div>
-            </div>
+                @if ($approve_notice->count() > 0)
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                        <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news logo"><span class="d-flex align-items-center ">&nbsp;Notice</span></div>
+                        <marquee class="news-scroll fs-3" behavior="scroll" direction="left"> <mark>
+                           {{$approve_notice[0]->notice_description}}
+                      </mark>
+                        </marquee>
+                      </div>
+                  </div>
+                @else
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                        <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news logo"><span class="d-flex align-items-center ">&nbsp;Notice</span></div>
+                        <marquee class="news-scroll fs-3" behavior="scroll" direction="left"> <mark>
+                          No Notice Uploaded Yet
+                      </mark>
+                        </marquee>
+                      </div>
+                  </div>
+                @endif
+
+
+
         </div>
           </div>
         </section>
@@ -155,55 +129,6 @@
         </div>
       </section><!-- End Counts Section -->
 
-      <!-- ======= Why Us Section ======= -->
-      <!-- <section id="why-us" class="why-us">
-        <div class="container" data-aos="fade-up">
-
-          <div class="row">
-            <div class="col-lg-4 d-flex align-items-stretch">
-              <div class="content">
-                <h3>Why Choose Mentor?</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                  Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-                </p>
-                <div class="text-center">
-                  <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon-boxes d-flex flex-column justify-content-center">
-                <div class="row">
-                  <div class="col-xl-4 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-receipt"></i>
-                      <h4>Corporis voluptates sit</h4>
-                      <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-cube-alt"></i>
-                      <h4>Ullamco laboris ladore pan</h4>
-                      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-images"></i>
-                      <h4>Labore consequatur</h4>
-                      <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section> -->
-      <!-- End Why Us Section -->
 
 
 
@@ -236,7 +161,7 @@
                         <span>Instructor: <strong>{{$course->relationWithTrainers->trainer_name}}</strong></span>
                       </div>
                       <div class="trainer-rank d-flex align-items-center">
-                        <button class="btn btn-warning"><a class="text-white" href="{{route('course.details', $course->id)}}">Details</a></button>
+                        <button class="btn btn-warning"><a class="text-white" href="{{route('course.details', $course->id)}}" target="_blank">Details</a></button>
                       </div>
                     </div>
                   </div>

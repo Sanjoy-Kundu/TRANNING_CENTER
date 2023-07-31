@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\AccountCreation;
 use App\Models\Course;
+use App\Models\Notice;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -105,35 +106,49 @@ class UserController extends Controller
 
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+
+
+
+
+    //:::::::::::::::::Notice Section :::::::::::::::::::::
+    public function all_notice(){
+        $all_notices = Notice::all();
+        return view('backend.users.notice.all_notice', compact('all_notices'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function pending_notice(){
+        return "not working";
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  */
+    // public function destroy(string $id)
+    // {
+    //     //
+    // }
 }

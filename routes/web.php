@@ -46,6 +46,9 @@ Route::post('user/delete', [UserController::class, 'user_multiple_deter'])->name
 Route::get('user/all/post/list', [UserController::class, 'all_course_post_list'])->name('user.all.post.list');
 Route::get('user/pending/post/list', [UserController::class, 'pending_list'])->name('user.pending.post.list');
 Route::get('user/approve/post/list', [UserController::class, 'approve_list'])->name('user.approve.post.list');
+//notice
+Route::get('user/notice/all', [UserController::class, 'all_notice'])->name('user.notice.all');
+Route::get('user/notice/pending', [UserController::class, 'pending_notice'])->name('user.notice.pending');
 
 
 

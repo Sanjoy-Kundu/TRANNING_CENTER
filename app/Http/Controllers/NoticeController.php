@@ -14,7 +14,8 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        //
+        $all_notices = Notice::all();
+        return view('backend.notice.all_notice_list', compact('all_notices'));
     }
 
     /**

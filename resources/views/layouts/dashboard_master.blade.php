@@ -271,6 +271,20 @@
                     </a>
                   </li>
 
+                  <li class="menu-item">
+                    <hr> <hr>
+                  </li>
+                  <li class="menu-item {{request()->is('user/notice/all') ? 'active' : ' ' }}">
+                    <a href="{{route('user.notice.all')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">All Notice</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('user/notice/all') ? 'active' : ' ' }}">
+                    <a href="{{route('user.notice.pending')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Pending Notice</div>
+                    </a>
+                  </li>
+
                 </ul>
               </li>
             @endif
@@ -289,14 +303,14 @@
                   </li>
 
                   <li class="menu-item {{request()->is('notice/all') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.all')}}" class="menu-link">
+                    <a href="" class="menu-link">
                       <div data-i18n="Under Maintenance">Your Notice List</div>
                     </a>
                   </li>
 
 
                   <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('user.pending.post.list')}}" class="menu-link">
+                    <a href="{{route('notice.all')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">All Notice List</div>
                     </a>
                   </li>
