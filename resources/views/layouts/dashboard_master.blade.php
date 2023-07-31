@@ -279,9 +279,14 @@
                       <div data-i18n="Under Maintenance">All Notice</div>
                     </a>
                   </li>
-                  <li class="menu-item {{request()->is('user/notice/all') ? 'active' : ' ' }}">
+                  <li class="menu-item {{request()->is('user/notice/pending') ? 'active' : ' ' }}">
                     <a href="{{route('user.notice.pending')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Pending Notice</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('user/notice/approve') ? 'active' : ' ' }}">
+                    <a href="{{route('user.notice.approve')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Approve Notice</div>
                     </a>
                   </li>
 

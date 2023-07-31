@@ -117,7 +117,14 @@ class UserController extends Controller
     }
 
     public function pending_notice(){
-        return "not working";
+     $all_pending_notices = Notice::where('status', '=', 'pending')->get();
+     return view('backend.users.notice.all_pending_notice', compact('all_pending_notices'));
+    }
+
+
+    public function approve_notice(){
+        $all_approve_notices = Notice::where('status', '=', 'approve')->get();
+        return view('backend.users.notice.all_approve_notification', compact('all_approve_notices'));
     }
 
     // /**

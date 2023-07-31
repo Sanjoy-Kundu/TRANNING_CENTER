@@ -29,3 +29,11 @@ $(document).ready(function(){
 $(document).ready(function(){
     new DataTable('#notice_table');
 })
+$(document).ready(function(){
+    new DataTable('#pending_notice_table');
+})
+$(document).ready(function(){
+    new DataTable('#approve_notice_table');
+})
+
+

@@ -49,6 +49,51 @@ class NoticeController extends Controller
         return back()->withSuccess('Notice Uploaded Successfully');
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+/***
+ *
+ * Notice approve form
+ *
+ */
+public function notice_approve_form($id){
+    $approve_notice = Notice::find($id);
+    return view('backend.users.notice.approve_notice_form', compact('approve_notice'));
+}
+
+public function notice_approve_store(Request $request, $id){
+
+    Notice::find($id)->update([
+        'status' => $request->status,
+    ]);
+    return back()->with('success', 'Notice Approve successfully');
+}
+
+
+public function notice_reject_form($id){
+    $reject_notice = Notice::find($id);
+    return view('backend.users.notice.rejected_notice', compact('reject_notice'));
+}
+
+
+
+public function notice_reject_store(Request $request, $id){
+    Notice::find($id)->update([
+        'status' => $request->status,
+    ]);
+    return back()->with('success', 'Your Notice Rejected Successfully');
+}
+
     /**
      * Display the specified resource.
      */

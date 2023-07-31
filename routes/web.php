@@ -49,6 +49,7 @@ Route::get('user/approve/post/list', [UserController::class, 'approve_list'])->n
 //notice
 Route::get('user/notice/all', [UserController::class, 'all_notice'])->name('user.notice.all');
 Route::get('user/notice/pending', [UserController::class, 'pending_notice'])->name('user.notice.pending');
+Route::get('user/notice/approve', [UserController::class, 'approve_notice'])->name('user.notice.approve');
 
 
 
@@ -108,8 +109,10 @@ Route::get('partner/view/{id}', [OurpartnerController::class, 'show'])->name('pa
 Route::get('notice/all', [NoticeController::class, 'index'])->name('notice.all');
 Route::get('notice/form', [NoticeController::class, 'create'])->name('notice.form');
 Route::post('notice/store', [NoticeController::class, 'store'])->name('notice.store');
-
-
+Route::get('notice/approve/{id}',[NoticeController::class, 'notice_approve_form'])->name('notice.approve');
+Route::post('notice/approve/store/{id}', [NoticeController::class, 'notice_approve_store'])->name('notice.approve.store');
+Route::get('notice/reject/{id}', [NoticeController::class, 'notice_reject_form'])->name('notice.reject');
+Route::post('notice/reject/store/{id}', [NoticeController::class, 'notice_reject_store'])->name('notice.reject.store');
 
 
 
