@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 16, 2023 at 07:59 PM
+-- Generation Time: Jul 31, 2023 at 06:28 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -62,6 +62,7 @@ CREATE TABLE `courses` (
   `total_seats` int NOT NULL,
   `discounted_price` int NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reject` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
   `course_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `course_image` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -73,8 +74,9 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `user_id`, `course_title`, `category_id`, `instructor_id`, `course_price`, `course_duration`, `discount`, `total_seats`, `discounted_price`, `status`, `course_description`, `course_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Wordpress Development', 1, 1, 11000, 3, 10, 120, 9900, 'approve', 'It is one of  the freelancing course for any type of people.', '-course-wddjoxb5lhglpy8rczjv.jpg', NULL, '2023-07-16 12:40:48', '2023-07-16 13:42:39');
+INSERT INTO `courses` (`id`, `user_id`, `course_title`, `category_id`, `instructor_id`, `course_price`, `course_duration`, `discount`, `total_seats`, `discounted_price`, `status`, `reject`, `course_description`, `course_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Wordpress Development', 1, 1, 11000, 3, 10, 120, 9900, 'approve', 'yes', 'It is one of  the freelancing course for any type of people.', '-course-wddjoxb5lhglpy8rczjv.jpg', NULL, '2023-07-16 12:40:48', '2023-07-30 05:36:42'),
+(2, 9, 'PHP Laravel', 1, 2, 15500, 3, 10, 20, 13950, 'approve', 'no', 'Good Course also beginner friendly', '-course-dworaywkgjrqi3jzilco.webp', NULL, '2023-07-20 04:09:26', '2023-07-30 05:47:15');
 
 -- --------------------------------------------------------
 
@@ -113,11 +115,36 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2023_06_30_095853_create_trainers_table', 2),
-(7, '2023_06_30_165700_create_success_students_table', 3),
 (10, '2023_07_02_095407_create_ourpartners_table', 4),
 (21, '2014_10_12_000000_create_users_table', 6),
 (22, '2023_07_02_102625_create_categories_table', 7),
-(23, '2023_06_29_120036_create_courses_table', 8);
+(23, '2023_06_29_120036_create_courses_table', 8),
+(24, '2023_06_30_165700_create_success_students_table', 9),
+(27, '2023_07_30_172732_create_notices_table', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notices`
+--
+
+CREATE TABLE `notices` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` int NOT NULL,
+  `notice_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notice_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notices`
+--
+
+INSERT INTO `notices` (`id`, `user_id`, `notice_name`, `notice_description`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Testing', 'his is to notify all UIU students that, if you have already completed your course registration by January 25, 2023, you will be automatically enrolled in your courses on LMS. However, for those who registered after that date or made changes to their section(s), manual enrollment is required.This is', 'reject', '2023-07-31 03:58:13', '2023-07-31 12:27:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,6 +160,14 @@ CREATE TABLE `ourpartners` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ourpartners`
+--
+
+INSERT INTO `ourpartners` (`id`, `partner_name`, `partner_image`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Walton BD', '-partner-rheywswnudnkkznqkdbr.jpg', '2023-07-30 05:24:19', '2023-07-30 05:24:19', NULL),
+(2, 'Uniliver Group', '-partner-qjtvdxnoyidrwqmdjorv.png', '2023-07-30 05:24:31', '2023-07-30 05:24:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -191,7 +226,7 @@ CREATE TABLE `success_students` (
   `student_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `student_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `student_story` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -202,8 +237,8 @@ CREATE TABLE `success_students` (
 --
 
 INSERT INTO `success_students` (`id`, `student_name`, `student_title`, `student_story`, `student_image`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Sabuj Kundu', 'Laravel Developer', 'He is a successfull Student', 'success-student-91zzgmgkzyc0glc9m10c.jpg', '2023-07-03 05:58:59', '2023-07-03 05:59:00', NULL),
-(2, 'Kellie Donaldson', 'Consequatur ut exped', 'Fugit incidunt atq', 'success-student-oyykss5cynh4zoypo7wj.jpg', '2023-07-03 06:00:27', '2023-07-03 06:00:27', NULL);
+(1, 'Gopal kundu', 'Jr. Wordpress Developer', 'WordPress is an open-source content management system (CMS). It\'s a popular tool for individuals without any coding experience who want to build websites and blogs. The software doesn\'t cost anything.', 'success-student-lx6sdanzcaakr17mwxkr.jpg', '2023-07-30 05:12:58', '2023-07-30 05:12:58', NULL),
+(2, 'Sanjoy Kundu', 'Php Laravel Developer', 'Laravel developers use the Laravel web framework to design and build web applications, services, sites, and tools. Laravel is a PHP-based, MVC architecture that relies on OOP to create websites, databases, forums, and caches.', 'success-student-mih89ic7gdy8tux5xjdq.jpg', '2023-07-30 05:13:45', '2023-07-30 05:13:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -230,7 +265,8 @@ CREATE TABLE `trainers` (
 --
 
 INSERT INTO `trainers` (`id`, `trainer_name`, `trainer_title`, `trainer_description`, `trainer_salary`, `trainer_facebook_link`, `trainer_linkdin_link`, `trainer_image`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'RR Raton', 'WordPress Developer', 'A highly skilled and motivated WordPress developer and trainer with 3 years of experience in designing, developing, and maintaining WordPress websites. Proficient in creating custom themes, plugins, and implementing various functionalities to enhance the user experience. Dedicated to staying up-to-date with the latest trends and technologies in the WordPress ecosystem.', 25000, 'https:://facebook1.com', 'https:://linkdin.com', 'trainer-gjnpj6l52zqsu4xy7qgm.jpg', '2023-07-16 12:31:15', '2023-07-16 12:31:15', NULL);
+(1, 'RR Raton', 'WordPress Developer', 'A highly skilled and motivated WordPress developer and trainer with 3 years of experience in designing, developing, and maintaining WordPress websites. Proficient in creating custom themes, plugins, and implementing various functionalities to enhance the user experience. Dedicated to staying up-to-date with the latest trends and technologies in the WordPress ecosystem.', 25000, 'https:://facebook1.com', 'https:://linkdin.com', 'trainer-gjnpj6l52zqsu4xy7qgm.jpg', '2023-07-16 12:31:15', '2023-07-16 12:31:15', NULL),
+(2, 'Mr. Vendor Roy', 'PHP Laravel', 'He is one of the best mentor', 12000, 'https:://facebook.com', 'https:://linkdin.com', 'trainer-qdjtxwprqwmu5bkyynrs.jpg', '2023-07-20 04:07:15', '2023-07-20 04:07:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -256,12 +292,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `profile`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$DvlvPirpVKSJ.DqYWNLTx.oxPdlJTnlFG9R8.5W0XrekIO03/Q5/u', NULL, 'admin', NULL, '2023-07-14 11:25:36', NULL),
+(1, 'admin', 'admin@gmail.com', '2023-07-29 03:38:14', '$2y$10$DvlvPirpVKSJ.DqYWNLTx.oxPdlJTnlFG9R8.5W0XrekIO03/Q5/u', NULL, 'admin', NULL, '2023-07-14 11:25:36', '2023-07-29 03:38:14'),
 (2, 'Sanjoy Kundu', 'sanjoykundu187@gmail.com', NULL, '$2y$10$EqGodhhMHx5qEus4KHk65u5JzQYjP.TWFSlMh6DPrt9FDv4KGfj5a', NULL, 'admin', NULL, NULL, NULL),
-(3, 'Swapna Kundu', 'swapna@gmail.com', NULL, '$2y$10$6dXvqhY8SecYVhZI3pPnm.g2sdeypNyq1dXSIBbFdnUjb3V97Wy4a', NULL, 'admin', NULL, NULL, NULL),
-(4, 'Sabuj Kundu', 'sabuj@gmail.com', NULL, '$2y$10$2w1vCmnjJ8NWjrONH9GJFu18pUNFGFoGx7GtZvgGSMv71.SJ36MWS', NULL, 'vendor', NULL, NULL, NULL),
 (5, 'Ratan Bishwash', 'ratan@gmail.com', NULL, '$2y$10$hlpHrVR2.NZ4zUqhyRAelO5XR.jbyax/0Mc2BF2TIEJj1tC/.rgW2', NULL, 'vendor', NULL, NULL, NULL),
-(6, 'vendor1`', 'vendor1@gmail.com', NULL, '$2y$10$cNPyKc7xkJzlJrZvuIjLLu1jVcfOtR.958jmXOZkGigJKv7wf3VUC', NULL, 'vendor', NULL, NULL, NULL);
+(6, 'vendor1`', 'vendor1@gmail.com', NULL, '$2y$10$cNPyKc7xkJzlJrZvuIjLLu1jVcfOtR.958jmXOZkGigJKv7wf3VUC', NULL, 'vendor', NULL, NULL, NULL),
+(9, 'Vendor Roy', 'vendor@gmail.com', NULL, '$2y$10$Vjb09UOF0UzHi08F/2V2Z.1DO5s8cyQbsl1zgHA1FcFgIvYD4etJy', NULL, 'vendor', NULL, NULL, NULL),
+(10, 'Hero Alom', 'heroalom@gmail.com', '2023-07-28 12:21:42', '$2y$10$2xBD9hS3J9pmynh6LSy4EeLS8Zy2nLHmbKlCmSuKc4K06JjHpVy0u', NULL, 'student', NULL, '2023-07-28 11:57:59', '2023-07-28 12:21:42'),
+(11, 'qyne@mailinator.com', 'qarezowaz@mailinator.com', '2023-07-28 12:25:49', '$2y$10$iwcl192HOZ8ryi6BJ4aIku2wFuapgbycufBgSJRVR7XzWMsOCDa2.', NULL, 'student', NULL, '2023-07-28 12:23:52', '2023-07-28 12:25:49'),
+(12, 'zyfihugize@mailinator.com', 'goxunofyt@mailinator.com', NULL, '$2y$10$/FWCRIS6yeyW1lU3y1MOVeE2dQCLd7JACSsNAOwiRQFiWR9ZiRRa6', NULL, 'student', NULL, '2023-07-28 12:33:43', '2023-07-28 12:33:43'),
+(13, 'hipykydufu@mailinator.com', 'tovor@mailinator.com', NULL, '$2y$10$HK87fZAalY3kgGhxDHnGeun0M9xl7PDnofwk3IF8nq3V1YSfFqfJi', NULL, 'student', NULL, '2023-07-28 12:44:29', '2023-07-28 12:44:29'),
+(14, 'pokeqequ@mailinator.com', 'ribos@mailinator.com', '2023-07-30 05:07:13', '$2y$10$VS5FnV9tkax9dAW68GEAaOpYhK3SBdVWz9wUeSNpBNqF6hw2kUF7y', NULL, 'student', NULL, '2023-07-30 05:06:36', '2023-07-30 05:07:13');
 
 --
 -- Indexes for dumped tables
@@ -292,6 +332,12 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notices`
+--
+ALTER TABLE `notices`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -353,7 +399,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -365,13 +411,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `notices`
+--
+ALTER TABLE `notices`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ourpartners`
 --
 ALTER TABLE `ourpartners`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `partners`
@@ -395,13 +447,13 @@ ALTER TABLE `success_students`
 -- AUTO_INCREMENT for table `trainers`
 --
 ALTER TABLE `trainers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
