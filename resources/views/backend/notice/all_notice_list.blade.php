@@ -45,8 +45,13 @@
                                   <td>
 
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-danger"><a href="{{route('notice.delete', $notice->id)}}" class="text-decoration-none text-white">DELETE</a></button>
-                                        <button type="button" class="btn btn-info"><a href="{{route('notice.show', $notice->id)}}" class="text-white">EDIT</a></button>
+                                        <button type="button" class="btn btn-danger"><a href="{{route('notice.admin.delete', $notice->id)}}" class="text-decoration-none text-white">DELETE</a></button>
+                                        @if ($notice->status == 'approve')
+                                        <button type="button" class="btn btn-success"><a href="{{route('notice.approve', $notice->id)}}" class="text-white">Pending</a></button>
+                                        @else
+                                        <button type="button" class="btn btn-info"><a href="{{route('notice.approve', $notice->id)}}" class="text-white">Approve</a></button>
+                                        @endif
+
                                         <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('notice.view', $notice->id)}}">View</a></button>
                                       </div>
 
@@ -72,32 +77,15 @@
                             </tr>
                         </table>
                     @endif
-
-
-
+                    <button class="btn btn-danger"><a href="{{route('notice.admin.recyclebin.all')}}" class="text-white text-decoration-none">Recycle Bin Notice List</a></button>
               </div>
             </div>
+
           </div>
         </div>
-        <!--/ Total Revenue -->
 
+        <!--/ Total Revenue -->
       </div>
 
     </div>
-
-    <script>
-
-    $(function(e){
-                $('#all_delete').click(function(){
-                    $(".singleBox")
-                })
-            });
-
-
-
-	</script>
-
-
-
-
 @endsection

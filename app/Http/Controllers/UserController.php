@@ -93,14 +93,14 @@ class UserController extends Controller
 
 
     public function pending_list(){
-        $pendingCourses =  Course::where('status', 'pending')->latest()->get();
+        $pendingCourses =  Course::where('status','=' ,'pending')->latest()->get();
         return view('backend.pending.pending_list', compact('pendingCourses'));
     }
 
 
     //approve post
     public function approve_list(){
-         $approveCourses = Course::where('status', 'approve')->latest()->get();
+         $approveCourses = Course::where('status', '=','approve')->latest()->get();
          return view('backend.pending.approve_list', compact('approveCourses'));
     }
 
@@ -111,21 +111,24 @@ class UserController extends Controller
 
 
     //:::::::::::::::::Notice Section :::::::::::::::::::::
-    public function all_notice(){
-        $all_notices = Notice::all();
-        return view('backend.users.notice.all_notice', compact('all_notices'));
-    }
 
-    public function pending_notice(){
-     $all_pending_notices = Notice::where('status', '=', 'pending')->get();
-     return view('backend.users.notice.all_pending_notice', compact('all_pending_notices'));
-    }
+    // public function all_notice(){
+    //     return $all_notices = Notice::all();
+    //     die();
+    //     return view('backend.users.notice.all_notice', compact('all_notices'));
+    // }
+
+    // public function pending_notice(){
+    //  return $all_pending_notices = Notice::where('status', '==', 'pending')->latest()->get();
+    //  die();
+    //  return view('backend.users.notice.all_pending_notice', compact('all_pending_notices'));
+    // }
 
 
-    public function approve_notice(){
-        $all_approve_notices = Notice::where('status', '=', 'approve')->get();
-        return view('backend.users.notice.all_approve_notification', compact('all_approve_notices'));
-    }
+    // public function approve_notice(){
+    //     $all_approve_notices = Notice::where('status', '=', 'approve')->get();
+    //     return view('backend.users.notice.all_approve_notification', compact('all_approve_notices'));
+    // }
 
     // /**
     //  * Display the specified resource.

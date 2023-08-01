@@ -10,17 +10,19 @@
         <!-- Total Revenue -->
         <div class="col-12 col-lg-9 order-2 order-md-3 order-lg-2 mb-4 mx-auto">
           <div class="card">
-
+                @if (session('success'))
+                    <div class="alert alert-danger">{{session('success')}}</div>
+                @endif
             <div class="row row-bordered g-0">
-                @if ($your_pending_list->count() > 0)
-                <h4 class="text-center p-2"><strong>Total Notice ({{$your_pending_list->count()}})</strong></h4>
+                @if ($recycleBinLists->count() > 0)
+                <h4 class="text-center p-2"><strong>Total Notice ({{$recycleBinLists->count()}})</strong></h4>
                 @else
-                <h4 class="text-center p-2"><strong>All Pending Notice  lists</strong></h4>
+                <h4 class="text-center p-2"><strong>All Notice  lists</strong></h4>
                 @endif
 
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-                    @if ($your_pending_list->count() > 0)
-                    <table id="pending_notice_table" class="display" style="width:100%">
+                    @if ($recycleBinLists->count() > 0)
+                    <table id="notice_table" class="display" style="width:100%">
                         <thead>
                           <tr>
                             <th scope="">Serial No</th>
@@ -32,8 +34,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @if ($your_pending_list->count() > 0)
-                              @foreach ($your_pending_list as $notice )
+                          @if ($recycleBinLists->count() > 0)
+                              @foreach ($recycleBinLists as $notice )
                               <tr>
                                   <th scope="row">{{$loop->index+1}}</th>
                                   <td>{{$notice->notice_name}}</td>
@@ -41,19 +43,16 @@
                                     <td>{{ Str::limit($notice->notice_description, 50) }}</td>
                                     <td>{{$notice->status}}</td>
                                   <td>
-                                    @if (Auth::user()->role == 'admin')
+
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-danger"><a href="" class="text-decoration-none text-white">DELETE</a></button>
-                                        <button type="button" class="btn btn-info"><a href="{{route('notice.approve', $notice->id)}}" class="text-white">Approve</a></button>
+                                        <button type="button" class="btn btn-danger"><a href="{{route('notice.permanent.delete', $notice->id)}}" class="text-decoration-none text-white">P.DELETE</a></button>
+                                        <button type="button" class="btn btn-info"><a href="{{route('notice.restore', $notice->id)}}" class="text-white">RESTORE</a></button>
+                                      </div>
+
+                                    {{-- <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                                         <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
                                       </div>
-                                    @else
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-warning"><a class="text-white" href="">DELETE</a></button>
-                                        <button type="button" class="btn btn-info"><a class="text-white" href="">EDIT</a></button>
-                                        <button type="button" class="btn btn-warning"><a class="text-white" href="">VIEW</a></button>
-                                      </div>
-                                    @endif
+                                    @endif --}}
 
                                   </td>
                                 </tr>
@@ -72,32 +71,15 @@
                             </tr>
                         </table>
                     @endif
-
-
-
+                    <button class="btn btn-danger"><a href="{{route('notice.all')}}" class="text-white text-decoration-none">Back</a></button>
               </div>
             </div>
+
           </div>
         </div>
-        <!--/ Total Revenue -->
 
+        <!--/ Total Revenue -->
       </div>
 
     </div>
-
-    <script>
-
-    $(function(e){
-                $('#all_delete').click(function(){
-                    $(".singleBox")
-                })
-            });
-
-
-
-	</script>
-
-
-
-
 @endsection

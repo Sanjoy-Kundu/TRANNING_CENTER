@@ -15,7 +15,20 @@ class NoticeController extends Controller
     public function index()
     {
          $your_notices = Notice::where('user_id', '=', Auth::user()->id)->latest()->get();
-        return view('backend.notice.all_notice_list', compact('your_notices'));
+         if($your_notices->count() > 0){
+            return view('backend.users.notice.all_notice', compact('your_notices'));
+         }else{
+            return view('backend.notice.empty.empty_notice');
+         }
+    }
+    public function all_notice()
+    {
+         $your_notices = Notice::all();
+         if($your_notices->count() > 0){
+            return view('backend.notice.all_notice_list', compact('your_notices'));
+         }else{
+            return view('backend.notice.empty.empty_notice');
+         }
     }
 
     /**
@@ -57,37 +70,57 @@ class NoticeController extends Controller
  *
  */
 
- public function approve_notice_list(){
-     $approve_notices = Notice::where('user_id', '=', Auth()->user()->id)->get();
-         if($approve_notices[0]->status == 'approve'){
-            $your_approve_notices =Notice::all();
-        return view('backend.notice.your_approve_notice', compact('your_approve_notices'));
-     }else{
-        return view('backend.notice.empty.empty_notice');
-     }
- }
+//  public function approve_notice_list(){
+//     $approve_notices = Notice::all();
+//         if($approve_notices->count() > 0){
+//             if($approve_notices[0]->status == 'approve'){
+//                 $your_approve_notices =Notice::where('status', '=', 'approve')->get();
+//             return view('backend.notice.your_approve_notice', compact('your_approve_notices'));
+//             }else{
+//                 return view('backend.notice.empty.empty_notice');
+//             }
+//         }else{
+//             return view('backend.notice.empty.empty_notice');
+//         }
 
 
- public function pending_notice_list(){
-    $pending_notices = Notice::where('user_id', '=', Auth::user()->id)->get();
-    if($pending_notices[0]->status == 'pending'){
-        $your_pending_list = Notice::all();
-        return view('backend.users.notice.all_pending_notice', compact('your_pending_list'));
-    }else{
-        return view('backend.notice.empty.empty_notice');
-    }
- }
+//  }
+
+
+//  public function pending_notice_list(){
+//           $pending_notices = Notice::all();
+//           if($pending_notices->count() > 0){
+//                 if($pending_notices[0]->status == 'pending'){
+//                     $your_approve_notices =Notice::where('status', '=', 'approve')->get();
+//                 }
+//           }
+
+//     }
+        //  if($pending_notices->count() > 0){
+        //        if($pending_notices[0]->status == 'pending'){
+        //             $your_pending_list = Notice::where('status', '=', 'pending')->get();
+        //             return view('backend.users.notice.all_pending_notice', compact('your_pending_list'));
+        //        }else{
+        //         return view('backend.notice.empty.empty_notice');
+        //        }
+        //  }else{
+        //     return view('backend.notice.empty.empty_notice');
+        //  }
+//  }
 
  public function reject_notice_list(){
     $rejected_notice = Notice::where('user_id', '=', Auth::user()->id)->get();
-    if($rejected_notice[0]->status == 'reject'){
-        $your_rejected_notices = Notice::all();
-        return view('backend.notice.your_rejected_notice', compact('your_rejected_notices'));
-    }else{
-        return view('backend.notice.empty.empty_notice');
-    }
+        if($rejected_notice->count() > 0){
+            if($rejected_notice[0]->status == 'reject'){
+                $your_rejected_notices = Notice::all();
+                return view('backend.notice.your_rejected_notice', compact('your_rejected_notices'));
+            }else{
+                return view('backend.notice.empty.empty_notice');
+            }
+        }else{
+            return view('backend.notice.empty.empty_notice');
+        }
  }
-
 
 
 
@@ -160,5 +193,44 @@ public function notice_reject_store(Request $request, $id){
     public function notice_delete($id){
         Notice::find($id)->delete();
         return back()->withSuccess('Notice Deleted Successfully');
+    }
+
+    public function notice_recyclebin_all(){
+         $recycleBinLists = Notice::onlyTrashed()->get();
+         if($recycleBinLists->count() > 0){
+            $recycleBinLists = Notice::onlyTrashed()->get();
+            return view('backend.notice.all_recycle_bin_notice', compact('recycleBinLists'));
+         }else{
+            return view('backend.notice.empty.empty_notice');
+         }
+    }
+
+
+    public function notice_recycleBin_restore($id){
+        Notice::onlyTrashed()->find($id)->restore();
+        return back()->with('success', 'Notice Restore Successfully');
+    }
+
+
+    public function notice_permanent_delete($id){
+        Notice::onlyTrashed()->find($id)->forceDelete();
+        return back()->with('success', 'Notice Permanent Deleted Successfully');
+    }
+
+
+
+    public function admin_notice_delete($id){
+        Notice::find($id)->delete();
+        return back()->withSuccess('Notice Deleted Successfully');
+    }
+
+    public function admin_notice_recyclebin_all(){
+        $recycleBinLists = Notice::onlyTrashed()->get();
+        if($recycleBinLists->count() > 0){
+            $recycleBinLists = Notice::onlyTrashed()->get();
+           return view('backend.users.notice.admin_recyclebin', compact('recycleBinLists'));
+        }else{
+           return view('backend.notice.empty.empty_notice');
+        }
     }
 }

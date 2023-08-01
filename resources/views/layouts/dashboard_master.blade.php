@@ -259,27 +259,11 @@
                       <div data-i18n="Under Maintenance">All Notice List</div>
                     </a>
                   </li>
-                  <li class="menu-item {{request()->is('notice/approve/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.approve.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Approve Notice</div>
+                  <li class="menu-item {{request()->is('notice/recyclebin/all') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.recyclebin.all')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Recycle Bin Notice</div>
                     </a>
                   </li>
-                  <li class="menu-item {{request()->is('notice/pending/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.pending.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Pending Notice</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.reject.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Reject Notice</div>
-                    </a>
-                  </li>
-
-
-
-
-
-
                 </ul>
               </li>
             <!---Notice Corner--->
@@ -317,21 +301,29 @@
                   <li class="menu-item">
                     <hr> <hr>
                   </li>
-                  <li class="menu-item {{request()->is('user/notice/all') ? 'active' : ' ' }}">
-                    <a href="{{route('user.notice.all')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">All Notice</div>
+                  <li class="menu-item {{request()->is('notice/all/admin') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.all.admin')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">All Notice List</div>
                     </a>
                   </li>
-                  <li class="menu-item {{request()->is('user/notice/pending') ? 'active' : ' ' }}">
-                    <a href="{{route('user.notice.pending')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Pending Notice</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('user/notice/approve') ? 'active' : ' ' }}">
-                    <a href="{{route('user.notice.approve')}}" class="menu-link">
+                  <li class="menu-item {{request()->is('notice/approve/list') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.approve.list')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Approve Notice</div>
                     </a>
                   </li>
+                  <li class="menu-item {{request()->is('notice/pending/list') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.pending.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Pending Notice</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.reject.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Reject Notice</div>
+                    </a>
+                  </li>
+
+
+
 
                 </ul>
               </li>
