@@ -14,8 +14,8 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        $all_notices = Notice::all();
-        return view('backend.notice.all_notice_list', compact('all_notices'));
+         $your_notices = Notice::where('user_id', '=', Auth::user()->id)->latest()->get();
+        return view('backend.notice.all_notice_list', compact('your_notices'));
     }
 
     /**
@@ -51,21 +51,50 @@ class NoticeController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
 /***
  *
  * Notice approve form
  *
  */
+
+ public function approve_notice_list(){
+     $approve_notices = Notice::where('user_id', '=', Auth()->user()->id)->get();
+         if($approve_notices[0]->status == 'approve'){
+            $your_approve_notices =Notice::all();
+        return view('backend.notice.your_approve_notice', compact('your_approve_notices'));
+     }else{
+        return view('backend.notice.empty.empty_notice');
+     }
+ }
+
+
+ public function pending_notice_list(){
+    $pending_notices = Notice::where('user_id', '=', Auth::user()->id)->get();
+    if($pending_notices[0]->status == 'pending'){
+        $your_pending_list = Notice::all();
+        return view('backend.users.notice.all_pending_notice', compact('your_pending_list'));
+    }else{
+        return view('backend.notice.empty.empty_notice');
+    }
+ }
+
+ public function reject_notice_list(){
+    $rejected_notice = Notice::where('user_id', '=', Auth::user()->id)->get();
+    if($rejected_notice[0]->status == 'reject'){
+        $your_rejected_notices = Notice::all();
+        return view('backend.notice.your_rejected_notice', compact('your_rejected_notices'));
+    }else{
+        return view('backend.notice.empty.empty_notice');
+    }
+ }
+
+
+
+
+
+
+
+
 public function notice_approve_form($id){
     $approve_notice = Notice::find($id);
     return view('backend.users.notice.approve_notice_form', compact('approve_notice'));
@@ -94,35 +123,42 @@ public function notice_reject_store(Request $request, $id){
     return back()->with('success', 'Your Notice Rejected Successfully');
 }
 
+
+
+
     /**
      * Display the specified resource.
      */
-    public function show(Notice $notice)
+    public function show(Notice $notice, $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Notice $notice)
-    {
-        //
+        $single_notice =  Notice::find($id);
+        return view('backend.notice.edit_notice', compact('single_notice'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Notice $notice)
+    public function notice_update(Request $request, $id)
     {
-        //
+         Notice::find($id)->update([
+            'notice_name' => $request->notice_name,
+            'notice_description' => $request->notice_description,
+        ]);
+        return back()->withSuccess('Notice Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Notice $notice)
+    public function notice_view($id)
     {
-        //
+       $singleNotice = Notice::find($id);
+        return view('backend.notice.view_notice', compact('singleNotice'));
+    }
+
+
+    public function notice_delete($id){
+        Notice::find($id)->delete();
+        return back()->withSuccess('Notice Deleted Successfully');
     }
 }

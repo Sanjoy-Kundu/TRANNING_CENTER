@@ -242,6 +242,49 @@
               </ul>
             </li>
 
+            <!---Notice Corner--->
+            <li class="menu-item">
+                <a href="" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                  <div data-i18n="Misc">Notice Corner</div>
+                </a>
+                <ul class="menu-sub">
+                  <li class="menu-item {{request()->is('notice/form') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.form')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Upload Notice</div>
+                    </a>
+                  </li>
+                <li class="menu-item {{request()->is('notice/all') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.all')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">All Notice List</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('notice/approve/list') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.approve.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Approve Notice</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('notice/pending/list') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.pending.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Pending Notice</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
+                    <a href="{{route('notice.reject.list')}}" class="menu-link">
+                      <div data-i18n="Under Maintenance">Reject Notice</div>
+                    </a>
+                  </li>
+
+
+
+
+
+
+                </ul>
+              </li>
+            <!---Notice Corner--->
+
+            <!--Admin Corner-->
             @if (Auth::user()->role == 'admin')
             <li class="menu-item">
                 <a href="" class="menu-link menu-toggle">
@@ -293,44 +336,7 @@
                 </ul>
               </li>
             @endif
-
-            <!---Notice Corner--->
-            <li class="menu-item">
-                <a href="" class="menu-link menu-toggle">
-                  <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                  <div data-i18n="Misc">Notice Corner</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item {{request()->is('notice/form') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.form')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Upload Notice</div>
-                    </a>
-                  </li>
-
-                  <li class="menu-item {{request()->is('notice/all') ? 'active' : ' ' }}">
-                    <a href="" class="menu-link">
-                      <div data-i18n="Under Maintenance">Your Notice List</div>
-                    </a>
-                  </li>
-
-
-                  <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.all')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">All Notice List</div>
-                    </a>
-                  </li>
-
-
-                  <li class="menu-item {{request()->is('user/approve/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('user.approve.post.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Your Approve Notice List</div>
-                    </a>
-                  </li>
-
-                </ul>
-              </li>
-            <!---Notice Corner--->
-
+            <!--Admin Corner-->
 
 
 

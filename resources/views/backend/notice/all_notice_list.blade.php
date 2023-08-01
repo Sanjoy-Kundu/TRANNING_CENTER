@@ -10,16 +10,18 @@
         <!-- Total Revenue -->
         <div class="col-12 col-lg-9 order-2 order-md-3 order-lg-2 mb-4 mx-auto">
           <div class="card">
-
+                @if (session('success'))
+                    <div class="alert alert-danger">{{session('success')}}</div>
+                @endif
             <div class="row row-bordered g-0">
-                @if ($all_notices->count() > 0)
-                <h4 class="text-center p-2"><strong>Total Notice ({{$all_notices->count()}})</strong></h4>
+                @if ($your_notices->count() > 0)
+                <h4 class="text-center p-2"><strong>Total Notice ({{$your_notices->count()}})</strong></h4>
                 @else
                 <h4 class="text-center p-2"><strong>All Notice  lists</strong></h4>
                 @endif
 
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-                    @if ($all_notices->count() > 0)
+                    @if ($your_notices->count() > 0)
                     <table id="notice_table" class="display" style="width:100%">
                         <thead>
                           <tr>
@@ -32,26 +34,26 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @if ($all_notices->count() > 0)
-                              @foreach ($all_notices as $notice )
+                          @if ($your_notices->count() > 0)
+                              @foreach ($your_notices as $notice )
                               <tr>
                                   <th scope="row">{{$loop->index+1}}</th>
                                   <td>{{$notice->notice_name}}</td>
                                     <td>{{$notice->relationWithUser->name}}</td>
                                     <td>{{ Str::limit($notice->notice_description, 50) }}</td>
-                                    <td>Approve</td>
+                                    <td>{{$notice->status}}</td>
                                   <td>
-                                    @if (Auth::user()->role == 'admin')
+
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-danger"><a href="" class="text-decoration-none text-white">DELETE</a></button>
-                                        <button type="button" class="btn btn-info"><a href="" class="text-white">EDIT</a></button>
+                                        <button type="button" class="btn btn-danger"><a href="{{route('notice.delete', $notice->id)}}" class="text-decoration-none text-white">DELETE</a></button>
+                                        <button type="button" class="btn btn-info"><a href="{{route('notice.show', $notice->id)}}" class="text-white">EDIT</a></button>
+                                        <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('notice.view', $notice->id)}}">View</a></button>
+                                      </div>
+
+                                    {{-- <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                                         <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
                                       </div>
-                                    @else
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
-                                      </div>
-                                    @endif
+                                    @endif --}}
 
                                   </td>
                                 </tr>

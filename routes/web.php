@@ -105,14 +105,28 @@ Route::get('partner/list', [OurpartnerController::class, 'index'])->name('partne
 Route::get('partner/view/{id}', [OurpartnerController::class, 'show'])->name('partner.view');
 
 
-
+//:::::::::notice list show ::::::::::::::::::::
 Route::get('notice/all', [NoticeController::class, 'index'])->name('notice.all');
+Route::get('notice/approve/list',[NoticeController::class, 'approve_notice_list'])->name('notice.approve.list');
+Route::get('notice/pending/list',[NoticeController::class, 'pending_notice_list'])->name('notice.pending.list');
+Route::get('notice/reject/list',[NoticeController::class, 'reject_notice_list'])->name('notice.reject.list');
+//:::::::::notice list show ::::::::::::::::::::
 Route::get('notice/form', [NoticeController::class, 'create'])->name('notice.form');
 Route::post('notice/store', [NoticeController::class, 'store'])->name('notice.store');
+Route::get('notice/show/{id}', [NoticeController::class, 'show'])->name('notice.show');
+Route::post('notice/update/{id}', [NoticeController::class, 'notice_update']);
+Route::get('notice/view/{id}', [NoticeController::class, 'notice_view'])->name('notice.view');
+Route::get('notice/delete/{id}', [NoticeController::class, 'notice_delete'])->name('notice.delete');
+
+
+
+//::::::::::::::admin user access user->notice ::::::::::::::::::::::
 Route::get('notice/approve/{id}',[NoticeController::class, 'notice_approve_form'])->name('notice.approve');
 Route::post('notice/approve/store/{id}', [NoticeController::class, 'notice_approve_store'])->name('notice.approve.store');
 Route::get('notice/reject/{id}', [NoticeController::class, 'notice_reject_form'])->name('notice.reject');
 Route::post('notice/reject/store/{id}', [NoticeController::class, 'notice_reject_store'])->name('notice.reject.store');
+//::::::::::::::admin user access user->notice ::::::::::::::::::::::
+
 
 
 
