@@ -52,7 +52,7 @@
                                         <button type="button" class="btn btn-info"><a href="{{route('notice.approve', $notice->id)}}" class="text-white">Approve</a></button>
                                         @endif
 
-                                        <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('notice.view', $notice->id)}}">View</a></button>
+                                        {{-- <button type="button" class="btn btn-warning"><a class="text-white" href="{{route('notice.view', $notice->id)}}">View</a></button> --}}
                                       </div>
 
                                     {{-- <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">

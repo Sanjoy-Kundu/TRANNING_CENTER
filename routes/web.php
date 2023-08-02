@@ -106,8 +106,8 @@ Route::get('partner/view/{id}', [OurpartnerController::class, 'show'])->name('pa
 
 //:::::::::notice list show ::::::::::::::::::::
 Route::get('notice/all', [NoticeController::class, 'index'])->name('notice.all');
-Route::get('notice/all/admin', [NoticeController::class, 'all_notice'])->name('notice.all.admin');
-Route::get('notice/approve/list',[NoticeController::class, 'approve_notice_list'])->name('notice.approve.list');
+Route::get('notice/all/admin', [NoticeController::class, 'all_notice_admin'])->name('notice.all.admin');
+Route::get('notice/approve/list',[NoticeController::class, 'admin_approve_notice_list'])->name('notice.approve.list');
 Route::get('notice/pending/list',[NoticeController::class, 'pending_notice_list'])->name('notice.pending.list');
 Route::get('notice/reject/list',[NoticeController::class, 'reject_notice_list'])->name('notice.reject.list');
 //:::::::::notice list show ::::::::::::::::::::

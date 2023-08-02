@@ -21,7 +21,7 @@ class NoticeController extends Controller
             return view('backend.notice.empty.empty_notice');
          }
     }
-    public function all_notice()
+    public function all_notice_admin()
     {
          $your_notices = Notice::all();
          if($your_notices->count() > 0){
