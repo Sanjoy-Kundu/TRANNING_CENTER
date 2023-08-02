@@ -104,34 +104,39 @@ Route::get('partner/list', [OurpartnerController::class, 'index'])->name('partne
 Route::get('partner/view/{id}', [OurpartnerController::class, 'show'])->name('partner.view');
 
 
-//:::::::::notice list show ::::::::::::::::::::
-Route::get('notice/all', [NoticeController::class, 'index'])->name('notice.all');
-Route::get('notice/all/admin', [NoticeController::class, 'all_notice_admin'])->name('notice.all.admin');
-Route::get('notice/approve/list',[NoticeController::class, 'admin_approve_notice_list'])->name('notice.approve.list');
-Route::get('notice/pending/list',[NoticeController::class, 'pending_notice_list'])->name('notice.pending.list');
-Route::get('notice/reject/list',[NoticeController::class, 'reject_notice_list'])->name('notice.reject.list');
+
+
+
+
+//=====================NOTICE PART START======================
 //:::::::::notice list show ::::::::::::::::::::
 Route::get('notice/form', [NoticeController::class, 'create'])->name('notice.form');
 Route::post('notice/store', [NoticeController::class, 'store'])->name('notice.store');
+
+//:::::::::vendor notice ::::::::::
+Route::get('notice/all', [NoticeController::class, 'index'])->name('notice.all');
+Route::get('notice/view/{id}', [NoticeController::class, 'notice_view'])->name('notice.view');
 Route::get('notice/show/{id}', [NoticeController::class, 'show'])->name('notice.show');
 Route::post('notice/update/{id}', [NoticeController::class, 'notice_update']);
-Route::get('notice/view/{id}', [NoticeController::class, 'notice_view'])->name('notice.view');
 Route::get('notice/delete/{id}', [NoticeController::class, 'notice_delete'])->name('notice.delete');
 Route::get('notice/recyclebin/all', [NoticeController::class, 'notice_recyclebin_all'])->name('notice.recyclebin.all');
+Route::get('notice/restore/{id}', [NoticeController::class, 'notice_recycleBin_restore'])->name('notice.restore');
+Route::get('notice/permanent/delete/{id}', [NoticeController::class, 'notice_permanent_delete'])->name('notice.permanent.delete');
+//:::::::::vendor notice ::::::::::
+
+
+//:::::::::notice list show admin Panel ::::::::::::::::::::
+Route::get('notice/all/admin', [NoticeController::class, 'all_notice_admin'])->name('notice.all.admin');
+Route::get('notice/approve/list',[NoticeController::class, 'admin_approve_notice_list'])->name('notice.approve.list');
+Route::get('notice/pending/list',[NoticeController::class, 'admin_pending_notice_list'])->name('notice.pending.list');
+Route::get('notice/status/{id}',[NoticeController::class, 'admin_notice_pending_approve_form'])->name('notice.status');
+Route::post('notice/status/store/{id}', [NoticeController::class, 'notice_status_store'])->name('notice.status.store');
 
 Route::get('notice/admin/delete/{id}', [NoticeController::class, 'admin_notice_delete'])->name('notice.admin.delete');
 Route::get('notice/admin/recyclebin/all', [NoticeController::class, 'admin_notice_recyclebin_all'])->name('notice.admin.recyclebin.all');
+//:::::::::notice list show admin Panel  end::::::::::::::::::::
 
-Route::get('notice/restore/{id}', [NoticeController::class, 'notice_recycleBin_restore'])->name('notice.restore');
-Route::get('notice/permanent/delete/{id}', [NoticeController::class, 'notice_permanent_delete'])->name('notice.permanent.delete');
-//::::::::::::::admin user access user->notice ::::::::::::::::::::::
-Route::get('notice/approve/{id}',[NoticeController::class, 'notice_approve_form'])->name('notice.approve');
-Route::post('notice/approve/store/{id}', [NoticeController::class, 'notice_approve_store'])->name('notice.approve.store');
-// Route::get('notice/pending', [NoticeController::class, 'pending_notice_form'])->name('notice.pending');
-// Route::post('notice/pending/store/{id}', [NoticeController::class, 'notice_pending_store'])->name('notice.pending.store');
-Route::get('notice/reject/{id}', [NoticeController::class, 'notice_reject_form'])->name('notice.reject');
-Route::post('notice/reject/store/{id}', [NoticeController::class, 'notice_reject_store'])->name('notice.reject.store');
-//::::::::::::::admin user access user->notice ::::::::::::::::::::::
+//=====================NOTICE PART END======================
 
 
 

@@ -316,11 +316,11 @@
                       <div data-i18n="Under Maintenance">Pending Notice</div>
                     </a>
                   </li>
-                  <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
+                  {{-- <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
                     <a href="{{route('notice.reject.list')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Reject Notice</div>
                     </a>
-                  </li>
+                  </li> --}}
 
 
 

@@ -13,14 +13,14 @@
           <div class="card">
 
             <div class="row row-bordered g-0">
-                @if ($your_approve_notices->count() > 0)
-                <h4 class="text-center p-2"><strong>Total Approve  Notice ({{$your_approve_notices->count()}})</strong></h4>
+                @if ($all_admin_pendingNotice_lists->count() > 0)
+                <h4 class="text-center p-2"><strong>Total Pending  Notice ({{$all_admin_pendingNotice_lists->count()}})</strong></h4>
                 @else
-                <h4 class="text-center p-2"><strong>All Approve Notice  lists</strong></h4>
+                <h4 class="text-center p-2"><strong>All Pending Notice  lists</strong></h4>
                 @endif
 
               <div class="col-md-12 col-12 col-xl-12 col-xxl-12 p-5">
-                    @if ($your_approve_notices->count() > 0)
+                    @if ($all_admin_pendingNotice_lists->count() > 0)
                     <table id="notice_table" class="display" style="width:100%">
                         <thead>
                           <tr>
@@ -33,8 +33,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @if ($your_approve_notices->count() > 0)
-                              @foreach ($your_approve_notices as $notice )
+                          @if ($all_admin_pendingNotice_lists->count() > 0)
+                              @foreach ($all_admin_pendingNotice_lists as $notice )
                               <tr>
                                   <th scope="row">{{$loop->index+1}}</th>
                                   <td>{{$notice->notice_name}}</td>
@@ -42,18 +42,10 @@
                                     <td>{{ Str::limit($notice->notice_description, 50) }}</td>
                                     <td>{{$notice->status}}</td>
                                   <td>
-                                    @if (Auth::user()->role == 'admin')
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-danger"><a href="" class="text-decoration-none text-white">DELETE</a></button>
-                                        <button type="button" class="btn btn-info"><a href="" class="text-white">EDIT</a></button>
-                                        <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
-                                      </div>
-                                    @else
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                        <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
-                                      </div>
-                                    @endif
 
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                                        <button type="button" class="btn btn-warning"><a class="text-white" href="">View</a></button>
+                                      </div>
                                   </td>
                                 </tr>
                               @endforeach
