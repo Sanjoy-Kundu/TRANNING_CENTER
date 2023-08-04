@@ -140,207 +140,49 @@
             <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">My Dashboard</div>
               </a>
             </li>
 
-
-
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Settings Corner</div>
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard')}}" class="menu-link">
+                <i class='menu-icon bx bx-crosshair'></i>
+                <div data-i18n="Analytics">Class Joining</div>
               </a>
-              <ul class="menu-sub">
-                @if (Auth::user()->role == 'admin')
-                <li class="menu-item {{(request()->is('category')) ? 'active' : ' '}}">
-                    <a href="{{route('category')}}" class="menu-link">
-                      <div data-i18n="Account">Upload Category</div>
-                    </a>
-                  </li>
-                @endif
-
-                <li class="menu-item {{(request()->is('course')) ? 'active' : ' '}}">
-                  <a href="{{route('course')}}" class="menu-link ">
-                    <div data-i18n="Account">Upload Course</div>
-                  </a>
-                </li>
-                @if (Auth::user()->role == 'admin')
-                <li class="menu-item {{(request()->is('trainer')) ? 'active' : ' '}}">
-                    <a href="{{route('trainer')}}" class="menu-link">
-                      <div data-i18n="Notifications">Upload Trainers</div>
-                    </a>
-                  </li>
-
-
-                <li class="menu-item {{(request()->is('success/student')) ? 'active' : ' '}}">
-                  <a href="{{route('success.student')}}" class="menu-link">
-                    <div data-i18n="Connections">Upload Success Students</div>
-                  </a>
-                </li>
-                <li class="menu-item {{(request()->is('partner/form')) ? 'active' : ' '}}">
-                  <a href="{{route('partner.form')}}" class="menu-link">
-                    <div data-i18n="Connections">Upload Partners</div>
-                  </a>
-                </li>
-                @endif
-              </ul>
             </li>
 
-
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">All Uploaded List</div>
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard')}}" class="menu-link">
+                <i class='menu-icon bx bxs-book-open'></i>
+                <div data-i18n="Analytics">My Course</div>
               </a>
-              <ul class="menu-sub">
-                <li class="menu-item {{(request()->is('category/list')) ? 'active' : ' '}}">
-                    <a href="{{route('category.list')}}" class="menu-link">
-                      <div data-i18n="Account">Category list</div>
-                    </a>
-                  </li>
-
-
-                @if (Auth::user()->role == 'admin')
-                <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
-                    <a href="{{route('course.list')}}" class="menu-link">
-                      <div data-i18n="Account">Course list</div>
-                    </a>
-                  </li>
-                @else
-                <li class="menu-item {{(request()->is('course/list')) ? 'active' : ' '}}">
-                    <a href="{{route('course.list')}}" class="menu-link">
-                      <div data-i18n="Account">Your Course list</div>
-                    </a>
-                  </li>
-                @endif
-
-                <li class="menu-item {{(request()->is('trainer/list')) ? 'active' : ' '}}">
-                  <a href="{{route('trainer.list')}}" class="menu-link">
-                    <div data-i18n="Notifications">Trainers List</div>
-                  </a>
-                </li>
-                <li class="menu-item {{(request()->is('partner/list')) ? 'active' : ' '}}">
-                  <a href="{{route('partner.list')}}" class="menu-link">
-                    <div data-i18n="Notifications">Partners List</div>
-                  </a>
-                </li>
-                <li class="menu-item {{request()->is('success/student/list') ? 'active' : ' '}}">
-                  <a href="{{route('success.student.list')}}" class="menu-link">
-                    <div data-i18n="Connections">Students List</div>
-                  </a>
-                </li>
-                @if (Auth::user()->role == 'admin')
-                <li class="menu-item {{(request()->is('user/list')) ? 'active' : ' '}}">
-                    <a href="{{route('user.list')}}" class="menu-link">
-                      <div data-i18n="Connections">Users List</div>
-                    </a>
-                  </li>
-                @endif
-
-
-              </ul>
             </li>
 
-            <!---Notice Corner--->
-            <li class="menu-item">
-                <a href="" class="menu-link menu-toggle">
-                  <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                  <div data-i18n="Misc">Notice Corner</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item {{request()->is('notice/form') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.form')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Upload Notice</div>
-                    </a>
-                  </li>
-                <li class="menu-item {{request()->is('notice/all') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.all')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">All Notice List</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('notice/recyclebin/all') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.recyclebin.all')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Recycle Bin Notice</div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            <!---Notice Corner--->
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard')}}" class="menu-link">
+                <i class='menu-icon bx bx-video-recording' ></i>
+                <div data-i18n="Analytics">Class Recording</div>
+              </a>
+            </li>
 
-            <!--Admin Corner-->
-            @if (Auth::user()->role == 'admin')
-            <li class="menu-item">
-                <a href="" class="menu-link menu-toggle">
-                  <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                  <div data-i18n="Misc">Admin Corner</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item {{request()->is('user/add') ? 'active' : ' ' }}">
-                    <a href="{{route('user.add')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Add User</div>
-                    </a>
-                  </li>
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard')}}" class="menu-link">
+                <i class='menu-icon bx bxs-user-voice'></i>
+                <div data-i18n="Analytics">Resource</div>
+              </a>
+            </li>
 
-                  <li class="menu-item {{request()->is('user/all/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('user.all.post.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">All Course Post List</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('user/pending/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('user.pending.post.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Pending Post</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('user/approve/post/list') ? 'active' : ' ' }}">
-                    <a href="{{route('user.approve.post.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Approve Post</div>
-                    </a>
-                  </li>
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard')}}" class="menu-link">
+                <i class='menu-icon bx bx-walk'></i>
+                <div data-i18n="Analytics">Advance Profile</div>
+              </a>
+            </li>
 
-                  <li class="menu-item">
-                    <hr> <hr>
-                  </li>
-                  <li class="menu-item {{request()->is('notice/all/admin') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.all.admin')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">All Notice List</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('notice/approve/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.approve.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Approve Notice</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{request()->is('notice/pending/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.pending.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Pending Notice</div>
-                    </a>
-                  </li>
-                  {{-- <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
-                    <a href="{{route('notice.reject.list')}}" class="menu-link">
-                      <div data-i18n="Under Maintenance">Reject Notice</div>
-                    </a>
-                  </li> --}}
-
-
-
-
-                </ul>
-              </li>
-            @endif
-            <!--Admin Corner-->
-
-
-
-
-
-            <!-- Components -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
-            <!-- Cards -->
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Cards</div>
+            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard')}}" class="menu-link">
+                <i class='menu-icon bx bxs-user-circle'></i>
+                <div data-i18n="Analytics"> Profile</div>
               </a>
             </li>
           </ul>
@@ -381,35 +223,11 @@
                       <li><a class="dropdown-item" href="#">Registration.... <sup class="text-danger">2</sup></a></li>
                     </ul>
                   </div>
-              <!-- Search -->
-              {{-- <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
-                </div>
-              </div> --}}
-              <!-- /Search -->
+
 
 
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
-                {{-- <li class="nav-item lh-1 me-3">
-                  <a
-                    class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                    >Star</a
-                  >
-                </li> --}}
 
 
 
@@ -436,8 +254,9 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">{{Auth()->user()->name}}</span>
-                            <small class="text-muted">Admin</small>
+                            {{-- <span class="fw-semibold d-block">{{Auth()->user()->name}}</span> --}}
+                            <small class="text-muted">Name: {{Auth::user()->name}}</small><br>
+                            <small>Role: {{Auth::user()->role}}</small>
                           </div>
                         </div>
                       </a>
@@ -446,47 +265,12 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li class="{{request()->is('user/password/reset') ? 'active' : ' ' }}">
-                      <a class="dropdown-item" href="{{route('dashboard.my.profile', Auth::user()->id)}}">
+                      <a class="dropdown-item" href="{{route('user.password.reset')}}">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle" id="status"><b></b></span> <!----check online--->
-                      </a>
-                    </li>
-                     {{-- <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        @if ($user->isOnline())
-                        <span class="align-middle text-primary" id="">Online</span>
-                        @else
-                        <span class="align-middle text-danger" id="">Offline</span>
-                        @endif
-                      </a>
-                    </li> --}}
 
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -537,18 +321,7 @@
 <div class="layout-overlay layout-menu-toggle"></div>
 </div>
 <!-- / Layout wrapper -->
-{{--
-<div class="buy-now">
-<a
-href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-target="_blank"
-class="btn btn-danger btn-buy-now"
->Upgrade to Pro</a
->
-</div> --}}
 
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
 
 
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\MyprofileController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\OurpartnerController;
 use App\Http\Controllers\ProfileController;
@@ -50,6 +51,7 @@ Route::get('user/approve/post/list', [UserController::class, 'approve_list'])->n
 Route::get('user/notice/all', [UserController::class, 'all_notice'])->name('user.notice.all');
 //reset password
 Route::get('user/password/reset', [UserController::class, 'password_reset_form'])->name('user.password.reset');
+
 
 
 
@@ -137,10 +139,17 @@ Route::post('notice/status/store/{id}', [NoticeController::class, 'notice_status
 Route::get('notice/admin/delete/{id}', [NoticeController::class, 'admin_notice_delete'])->name('notice.admin.delete');
 Route::get('notice/admin/recyclebin/all', [NoticeController::class, 'admin_notice_recyclebin_all'])->name('notice.admin.recyclebin.all');
 //:::::::::notice list show admin Panel  end::::::::::::::::::::
-
 //=====================NOTICE PART END======================
 
 
+
+
+
+
+//=====================My Profile Controller =======================
+Route::get('dashboard/my/profile', [MyprofileController::class, 'my_profile'])->name('dashboard.my.profile');
+Route::post('dashboard/my/profile/password/change', [MyprofileController::class, 'store'])->name('dashboard.my.profile.password.change');
+//=====================My Profile Controller =======================
 
 
 

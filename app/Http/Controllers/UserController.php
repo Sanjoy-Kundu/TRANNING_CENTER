@@ -102,18 +102,4 @@ class UserController extends Controller
          return view('backend.pending.approve_list', compact('approveCourses'));
     }
 
-
-
-
-
-
-
-/**
- * Reset my passsword
- */
-public function password_reset_form(){
-    return view('backend.profile.password_reset_form');
-}
-
-
 }
