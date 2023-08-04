@@ -48,6 +48,8 @@ Route::get('user/pending/post/list', [UserController::class, 'pending_list'])->n
 Route::get('user/approve/post/list', [UserController::class, 'approve_list'])->name('user.approve.post.list');
 //notice
 Route::get('user/notice/all', [UserController::class, 'all_notice'])->name('user.notice.all');
+//reset password
+Route::get('user/password/reset', [UserController::class, 'password_reset_form'])->name('user.password.reset');
 
 
 

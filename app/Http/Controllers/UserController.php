@@ -57,38 +57,36 @@ class UserController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-        'name' => 'required',
-        'email' => 'required || unique:users,email',
-        'role' => 'required'
+        'name'       => 'required',
+        'email'       => 'required || unique:users,email',
+        'role'          => 'required'
        ],[
-        'name.required' => "User name is required",
-        'email.required' => "User email is required",
-        'email.unique' => "User Email Already Taken",
-        'role.required' => "Select One first",
+        'name.required'        => "User name is required",
+        'email.required'        => "User email is required",
+        'email.unique'          => "User Email Already Taken",
+        'role.required'           => "Select One first",
        ]);
 
         $generatePassword =  Str::upper(Str::random(8));
        User::insert([
-        'name' => $request ->name,
-        'email' => $request ->email,
-        'password' => bcrypt($generatePassword),
-        'role' => $request ->role,
+        'name'         => $request ->name,
+        'email'          => $request ->email,
+        'password'    => bcrypt($generatePassword),
+        'role'             => $request ->role,
        ]);
        //return $generatePassword; //NIN4KIS7 == raton data
 
        $info = [
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => $generatePassword,
-        'role' => $request->role,
+        'name'            => $request->name,
+        'email'            => $request->email,
+        'password'     => $generatePassword,
+        'role'              => $request->role,
        ];
 
        Mail::to($request->email)->send(new AccountCreation($info));
       return back()->with('success', 'Account creation successfully');
 
     }
-
-
 
 
 
@@ -110,55 +108,12 @@ class UserController extends Controller
 
 
 
-    //:::::::::::::::::Notice Section :::::::::::::::::::::
-
-    // public function all_notice(){
-    //     return $all_notices = Notice::all();
-    //     die();
-    //     return view('backend.users.notice.all_notice', compact('all_notices'));
-    // }
-
-    // public function pending_notice(){
-    //  return $all_pending_notices = Notice::where('status', '==', 'pending')->latest()->get();
-    //  die();
-    //  return view('backend.users.notice.all_pending_notice', compact('all_pending_notices'));
-    // }
+/**
+ * Reset my passsword
+ */
+public function password_reset_form(){
+    return view('backend.profile.password_reset_form');
+}
 
 
-    // public function approve_notice(){
-    //     $all_approve_notices = Notice::where('status', '=', 'approve')->get();
-    //     return view('backend.users.notice.all_approve_notification', compact('all_approve_notices'));
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show(string $id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(string $id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(string $id)
-    // {
-    //     //
-    // }
 }
