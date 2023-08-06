@@ -149,6 +149,7 @@ Route::get('notice/admin/recyclebin/all', [NoticeController::class, 'admin_notic
 //=====================My Profile Controller =======================
 Route::get('dashboard/my/profile', [MyprofileController::class, 'my_profile'])->name('dashboard.my.profile');
 Route::post('dashboard/my/profile/password/change', [MyprofileController::class, 'store'])->name('dashboard.my.profile.password.change');
+Route::post('dashboard/my/profile/store/{id}', [MyprofileController::class, 'profile_store'])->name('dashboard.my.profile.store');
 //=====================My Profile Controller =======================
 
 

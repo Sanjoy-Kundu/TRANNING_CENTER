@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class MyprofileController extends Controller
 {
@@ -73,11 +76,45 @@ class MyprofileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Myprofile $myprofile)
+    public function profile_store(Request $request, $id)
     {
-        //
-    }
+        if($request->hasFile('your_image')){
+            $your_profile_indb = User::find($id)->profile;
+            if($your_profile_indb == NULL){
+                $profileImageName ="profile-".Str::lower(Str::random(20)).".".$request->file("your_image")->extension();
+                $profilePath ='uploads/user_profile/'.$profileImageName;
+                Image::make($request->file("your_image"))->resize(400, 400)->save($profilePath);
 
+                User::find($id)->update([
+                    'profile' => $profileImageName
+                ]);
+                return back()->withSuccess('Profile Uploaded Successfully');
+            }else{
+
+                //if profile image on database then update
+               if($request->hasFile('your_image')){
+                $profile_image = User::find($id)->your_image;
+                if($profile_image != NULL){
+                   unlink(public_path('uploads/user_profile/'.$profile_image));
+                }
+                $update_image = "update-profile".Str::lower(Str::random(20)).".".$request->file("your_image")->extension();
+                $path = 'uploads/user_profile/'.$update_image;
+                Image::make($request->file("your_image"))->resize(400, 400)->save($path);
+
+                User::find($id)->update([
+                   'profile' => $update_image,
+                ]);
+            }
+            return back()->with('update_profile', 'Your profile updated Successfully');
+        }
+        //if profile image on database then update
+    }else{
+        User::find($id)->update([
+            'name' => $request->your_name
+        ]);
+        return back()->with('name_update', 'Name Updated Successfully');
+    }
+    }
     /**
      * Show the form for editing the specified resource.
      */
