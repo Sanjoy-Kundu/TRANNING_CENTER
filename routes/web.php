@@ -9,6 +9,7 @@ use App\Http\Controllers\MyprofileController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\OurpartnerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\SuccessStudentController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\UserController;
@@ -35,7 +36,8 @@ Route::get('course/details/{id}', [FrontendController::class, 'course_details'])
 
 
 
-Route::get('/dashboard', [BackendController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [BackendController::class, 'dashboard'])->middleware(['auth', 'verified', 'check.student'])->name('dashboard');
+Route::get('dashboard/student', [StudentDashboardController::class, 'student_dashboard'])->name('dashboard.student');
 
 
 

@@ -137,8 +137,8 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             {{-- <li class="{{ (request()->is('admin/cities')) ? 'active' : '' }}"> --}}
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
-              <a href="{{route('dashboard')}}" class="menu-link">
+            <li class="menu-item  {{(request()->is('dashboard/student')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard.student')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">My Dashboard</div>
               </a>
@@ -165,22 +165,23 @@
               </a>
             </li>
 
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+            <li class="menu-item">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class='menu-icon bx bxs-user-voice'></i>
                 <div data-i18n="Analytics">Resource</div>
               </a>
             </li>
 
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+            <li class="menu-item">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class='menu-icon bx bx-walk'></i>
                 <div data-i18n="Analytics">Advance Profile</div>
               </a>
             </li>
 
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
-              <a href="{{route('dashboard')}}" class="menu-link">
+
+            <li class="menu-item {{request()->is('dashboard/my/profile') ? 'active' : ' '}}">
+              <a href="{{route('dashboard.my.profile')}}" class="menu-link">
                 <i class='menu-icon bx bxs-user-circle'></i>
                 <div data-i18n="Analytics"> Profile</div>
               </a>
@@ -265,7 +266,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li class="{{request()->is('user/password/reset') ? 'active' : ' ' }}">
-                      <a class="dropdown-item" href="{{route('user.password.reset')}}">
+                      <a class="dropdown-item" href="{{route('dashboard.my.profile')}}">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>

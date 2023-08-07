@@ -316,6 +316,7 @@
                       <div data-i18n="Under Maintenance">Pending Notice</div>
                     </a>
                   </li>
+
                   {{-- <li class="menu-item {{request()->is('notice/reject/list') ? 'active' : ' ' }}">
                     <a href="{{route('notice.reject.list')}}" class="menu-link">
                       <div data-i18n="Under Maintenance">Reject Notice</div>
@@ -330,19 +331,28 @@
             @endif
             <!--Admin Corner-->
 
-
+            <li class="{{request()->is('user/password/reset') ? 'active' : ' ' }}">
+                <a class="dropdown-item" href="{{route('dashboard.my.profile', Auth::user()->id)}}">
+                  <i class="bx bx-user me-2"></i>
+                  <span class="align-middle">My Profile</span>
+                </a>
+              </li>
 
 
 
             <!-- Components -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+            <li class="menu-header small text-uppercase {{request()->is('dashboard/my/profile') ? 'active' : ' ' }}"><span class="menu-header-text">User Profile</span></li>
             <!-- Cards -->
             <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Cards</div>
+              <a href="{{route('dashboard.my.profile', Auth::user()->id)}}" class="menu-link">
+                <i class="bx bx-user me-2"></i>
+                <div data-i18n="Basic">My Profile</div>
               </a>
             </li>
+
+
+
+
           </ul>
         </aside>
         <!-- / Menu -->

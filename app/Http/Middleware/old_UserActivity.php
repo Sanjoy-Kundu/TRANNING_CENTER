@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace App\Http\Middleware;
 
@@ -18,13 +18,13 @@ class UserActivity
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-       if(Auth::check()){
-        $expireAt = Carbon::now()->addMinutes(1);
-        Cache::put('user_online'.Auth()->user()->id, true, $expireAt);
-    }
-    return $next($request);
+        if(Auth::check()){
+            $expireAt = Carbon::now()->addMinutes(1);
+            Cache::put('user_online'.Auth()->user()->id, true, $expireAt);
+        }
+        return $next($request);
     }
 }
+
 
 ?>

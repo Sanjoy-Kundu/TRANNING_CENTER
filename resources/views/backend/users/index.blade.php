@@ -63,6 +63,7 @@
                                   <td>{{$user->email}}</td>
                                   <td>{{$user->role}}</td>
                                   <td>
+                                    {{-- //online --}}
                                       @if ($user->isOnline())
                                           <b class="text-primary">ONLINE</b>
                                       @else
