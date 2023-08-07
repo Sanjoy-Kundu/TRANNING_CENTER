@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 31, 2023 at 06:28 PM
+-- Generation Time: Aug 07, 2023 at 07:17 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -76,7 +76,7 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`id`, `user_id`, `course_title`, `category_id`, `instructor_id`, `course_price`, `course_duration`, `discount`, `total_seats`, `discounted_price`, `status`, `reject`, `course_description`, `course_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 5, 'Wordpress Development', 1, 1, 11000, 3, 10, 120, 9900, 'approve', 'yes', 'It is one of  the freelancing course for any type of people.', '-course-wddjoxb5lhglpy8rczjv.jpg', NULL, '2023-07-16 12:40:48', '2023-07-30 05:36:42'),
-(2, 9, 'PHP Laravel', 1, 2, 15500, 3, 10, 20, 13950, 'approve', 'no', 'Good Course also beginner friendly', '-course-dworaywkgjrqi3jzilco.webp', NULL, '2023-07-20 04:09:26', '2023-07-30 05:47:15');
+(2, 9, 'PHP Laravel', 1, 2, 15500, 3, 10, 20, 13950, 'approve', 'no', 'Good Course also beginner friendly', '-course-dworaywkgjrqi3jzilco.webp', NULL, '2023-07-20 04:09:26', '2023-08-01 11:41:25');
 
 -- --------------------------------------------------------
 
@@ -144,7 +144,7 @@ CREATE TABLE `notices` (
 --
 
 INSERT INTO `notices` (`id`, `user_id`, `notice_name`, `notice_description`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Testing', 'his is to notify all UIU students that, if you have already completed your course registration by January 25, 2023, you will be automatically enrolled in your courses on LMS. However, for those who registered after that date or made changes to their section(s), manual enrollment is required.This is', 'reject', '2023-07-31 03:58:13', '2023-07-31 12:27:23', NULL);
+(1, 1, '10 Days off', 'lorem ipusm is good for us', 'approve', '2023-08-04 04:22:21', '2023-08-04 04:22:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -292,8 +292,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `profile`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '2023-07-29 03:38:14', '$2y$10$DvlvPirpVKSJ.DqYWNLTx.oxPdlJTnlFG9R8.5W0XrekIO03/Q5/u', NULL, 'admin', NULL, '2023-07-14 11:25:36', '2023-07-29 03:38:14'),
-(2, 'Sanjoy Kundu', 'sanjoykundu187@gmail.com', NULL, '$2y$10$EqGodhhMHx5qEus4KHk65u5JzQYjP.TWFSlMh6DPrt9FDv4KGfj5a', NULL, 'admin', NULL, NULL, NULL),
+(1, 'admin', 'admin@gmail.com', '2023-07-29 03:38:14', '$2y$10$fBvNrQpH36/Yr.DoYDTCwe5QMbpv41/zCZvyvUNEailDr4M993KnK', 'update-profiledrbanh2ambjgzsbyqwta.jpg', 'admin', NULL, '2023-07-14 11:25:36', '2023-08-06 12:34:21'),
 (5, 'Ratan Bishwash', 'ratan@gmail.com', NULL, '$2y$10$hlpHrVR2.NZ4zUqhyRAelO5XR.jbyax/0Mc2BF2TIEJj1tC/.rgW2', NULL, 'vendor', NULL, NULL, NULL),
 (6, 'vendor1`', 'vendor1@gmail.com', NULL, '$2y$10$cNPyKc7xkJzlJrZvuIjLLu1jVcfOtR.958jmXOZkGigJKv7wf3VUC', NULL, 'vendor', NULL, NULL, NULL),
 (9, 'Vendor Roy', 'vendor@gmail.com', NULL, '$2y$10$Vjb09UOF0UzHi08F/2V2Z.1DO5s8cyQbsl1zgHA1FcFgIvYD4etJy', NULL, 'vendor', NULL, NULL, NULL),
@@ -301,7 +300,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `pr
 (11, 'qyne@mailinator.com', 'qarezowaz@mailinator.com', '2023-07-28 12:25:49', '$2y$10$iwcl192HOZ8ryi6BJ4aIku2wFuapgbycufBgSJRVR7XzWMsOCDa2.', NULL, 'student', NULL, '2023-07-28 12:23:52', '2023-07-28 12:25:49'),
 (12, 'zyfihugize@mailinator.com', 'goxunofyt@mailinator.com', NULL, '$2y$10$/FWCRIS6yeyW1lU3y1MOVeE2dQCLd7JACSsNAOwiRQFiWR9ZiRRa6', NULL, 'student', NULL, '2023-07-28 12:33:43', '2023-07-28 12:33:43'),
 (13, 'hipykydufu@mailinator.com', 'tovor@mailinator.com', NULL, '$2y$10$HK87fZAalY3kgGhxDHnGeun0M9xl7PDnofwk3IF8nq3V1YSfFqfJi', NULL, 'student', NULL, '2023-07-28 12:44:29', '2023-07-28 12:44:29'),
-(14, 'pokeqequ@mailinator.com', 'ribos@mailinator.com', '2023-07-30 05:07:13', '$2y$10$VS5FnV9tkax9dAW68GEAaOpYhK3SBdVWz9wUeSNpBNqF6hw2kUF7y', NULL, 'student', NULL, '2023-07-30 05:06:36', '2023-07-30 05:07:13');
+(14, 'pokeqequ@mailinator.com', 'ribos@mailinator.com', '2023-07-30 05:07:13', '$2y$10$VS5FnV9tkax9dAW68GEAaOpYhK3SBdVWz9wUeSNpBNqF6hw2kUF7y', NULL, 'student', NULL, '2023-07-30 05:06:36', '2023-07-30 05:07:13'),
+(15, 'Sanjoy Kundu', 'sanjoykundu187@gmail.com', '2023-08-01 21:07:48', '$2y$10$wQ8GDz0SSnlgfefboYebbutEJXx3avb/zwbMR46Q0Ao06/kTNeipm', NULL, 'vendor', NULL, NULL, '2023-08-01 21:07:48'),
+(16, 'Keya Akter Nijum', 'keya@gmail.com', '2023-08-07 11:27:15', '$2y$10$d2CcCM2JMmMMxhOCxilDG.MrWXHRNrp7YYyZL4r8OnKjDxFFYNmQa', NULL, 'student', NULL, '2023-08-07 11:26:41', '2023-08-07 13:13:39');
 
 --
 -- Indexes for dumped tables
@@ -453,7 +454,7 @@ ALTER TABLE `trainers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
