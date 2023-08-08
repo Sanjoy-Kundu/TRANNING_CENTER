@@ -125,4 +125,7 @@ class MyprofileController extends Controller
         return view('backend.my_profile.advance_profile');
     }
 
+    public function job_profile(){
+        return view('backend.my_profile.job_profile');
+    }
 }

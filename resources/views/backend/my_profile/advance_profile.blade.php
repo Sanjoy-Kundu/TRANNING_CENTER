@@ -39,7 +39,7 @@
                     <div class="card-body">
                       <h1 class="card-title">Create A Talentpool Account</h1>
                       <h5 class="card-text">With supporting text below as a natural lead-in to additional content.In order to show your skill to our recruiters and to get hired,  you need to create a advance profile account</h5>
-                      <a href="#" class="btn btn-warning">Make Your Advacne Profile Account</a>
+                      <a href="{{route('dashboard.advance.job.profile')}}" class="btn btn-warning">Make Your Advacne Profile Account</a>
                     </div>
                   </div>
             </div>
