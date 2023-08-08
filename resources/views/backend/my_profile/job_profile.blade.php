@@ -2,9 +2,9 @@
 @section('content')
         <div class="content-wrapper">
             <div class="container">
-                <h1 class="text-center p-5">Wellcome to  {{Auth::user()->name}} Profile</h1>
-                  <div class="w-75 mx-auto">
-                    <form action="">
+                <h1 class="text-center pt-3">Wellcome to  {{Auth::user()->name}} Profile</h1>
+                  <div class="w-75 mx-auto mt-3 mb-3">
+                    <form action="" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Name</b></label>
@@ -42,7 +42,7 @@
                             <label for="" class="form-label"><b class="fs-4">Upload Your Photo</b></label>
                             <input type="file" class="form-control" id="" name="job_profile_your_photo" >
                           </div>
-                          <button type="submit" class="btn btn-primary">Save and Continue</button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                             <!--Add Education Modal-->
                                  <!-- Modal -->
