@@ -17,7 +17,7 @@ class StudentCheck
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role == 'student'){
-            return redirect('/dashboard/student');
+            return redirect('/dashboard');
         }
         return $next($request);
     }
