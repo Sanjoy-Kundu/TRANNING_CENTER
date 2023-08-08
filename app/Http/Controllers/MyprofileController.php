@@ -128,4 +128,29 @@ class MyprofileController extends Controller
     public function job_profile(){
         return view('backend.my_profile.job_profile');
     }
+    public function job_profile_store(Request $request , $id){
+        $request->validate([
+            'job_profile_name'                       => 'required',
+            'job_profile_email'                       => 'required',
+            'job_profile_designation'             => 'required',
+            'job_profile_phone_number'        => 'required',
+            'job_profile_address'                   => 'required',
+            'job_profile_your_skills'              => 'required',
+            'job_profile_portfolio'                  => 'required',
+            'job_profile_github_account'     => 'required',
+            'job_profile_your_photo'           => 'required',
+        ],
+        [
+            'job_profile_name.required' => 'This field is required',
+            'job_profile_email.required' => 'This field is required',
+            'job_profile_designation.required' => 'This field is required',
+            'job_profile_phone_number.required' => 'This field is required',
+            'job_profile_address.required' => 'This field is required',
+            'job_profile_your_skills.required' => 'This field is required',
+            'job_profile_portfolio.required' => 'This field is required',
+            'job_profile_github_account.required' => 'This field is required',
+            'job_profile_your_photo.required' => 'This field is required',
+     ]);
+        return back();
+    }
 }

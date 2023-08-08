@@ -156,6 +156,7 @@ Route::post('dashboard/my/profile/store/{id}', [MyprofileController::class, 'pro
 
 Route::get('dashboard/advance/profile', [MyprofileController::class, 'advance_profile'])->name('dashboard.advance.profile');
 Route::get('dashboard/advance/job/profile', [MyprofileController::class, 'job_profile'])->name('dashboard.advance.job.profile');
+Route::post('dashboard/advance/job/profile/store/{id}', [MyprofileController::class, 'job_profile_store'])->name('dashboard.advance.job.profile.store');
 //=====================My Profile Controller =======================
 
 

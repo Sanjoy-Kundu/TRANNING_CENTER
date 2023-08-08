@@ -4,43 +4,70 @@
             <div class="container">
                 <h1 class="text-center pt-3">Wellcome to  {{Auth::user()->name}} Profile</h1>
                   <div class="w-75 mx-auto mt-3 mb-3">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{route('dashboard.advance.job.profile.store', Auth::user()->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Name</b></label>
                             <input type="text" class="form-control" id="" name="job_profile_name" placeholder="Enter Your Name">
+                            @error('job_profile_name')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Email</b></label>
                             <input type="email" class="form-control" id="" name="job_profile_email" placeholder="Enter Your Email">
+                            @error('job_profile_email')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Designation</b></label>
                             <input type="text" class="form-control" id="" name="job_profile_designation" placeholder="Enter Your Title">
+                            @error('job_profile_designation')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Phone Number</b></label>
                             <input type="tel" class="form-control" id="" name="job_profile_phone_number" placeholder="Enter Your Number">
+                            @error('job_profile_phone_number')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Address</b></label>
                             <input type="text" class="form-control" id="" name="job_profile_address" placeholder="Enter Your Address">
+                            @error('job_profile_address')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Skills</b></label>
                             <input type="text" class="form-control" id="" name="job_profile_your_skills" placeholder="html, css, bootstrap, javascript, Mysql">
+                            @error('job_profile_your_skills')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Portfolio Links</b></label>
                             <input type="text" class="form-control" id="" name="job_profile_portfolio" placeholder="Enter Your Portfolio Link">
+                            @error('job_profile_portfolio')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Github Account Link</b></label>
                             <input type="text" class="form-control" id="" name="job_profile_github_account" placeholder="Enter Your Github Link">
+                            @error('job_profile_github_account')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Upload Your Photo</b></label>
                             <input type="file" class="form-control" id="" name="job_profile_your_photo" >
+                            @error('job_profile_your_photo')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                           </div>
                           <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

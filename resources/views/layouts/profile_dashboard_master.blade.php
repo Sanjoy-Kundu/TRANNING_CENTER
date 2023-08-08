@@ -144,21 +144,21 @@
               </a>
             </li>
 
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+            <li class="menu-item  ">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class='menu-icon bx bx-crosshair'></i>
                 <div data-i18n="Analytics">Class Joining</div>
               </a>
             </li>
 
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+            <li class="menu-item">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class='menu-icon bx bxs-book-open'></i>
                 <div data-i18n="Analytics">My Course</div>
               </a>
             </li>
 
-            <li class="menu-item  {{(request()->is('dashboard')) ? 'active' : ' '}}">
+            <li class="menu-item">
               <a href="{{route('dashboard')}}" class="menu-link">
                 <i class='menu-icon bx bx-video-recording' ></i>
                 <div data-i18n="Analytics">Class Recording</div>
