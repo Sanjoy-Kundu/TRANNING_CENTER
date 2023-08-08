@@ -137,8 +137,8 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             {{-- <li class="{{ (request()->is('admin/cities')) ? 'active' : '' }}"> --}}
-            <li class="menu-item  {{(request()->is('dashboard/student')) ? 'active' : ' '}}">
-              <a href="{{route('dashboard.student')}}" class="menu-link">
+            <li class="menu-item  {{(request()->is('dashboard/my/profile')) ? 'active' : ' '}}">
+              <a href="{{route('dashboard.my.profile')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">My Dashboard</div>
               </a>
@@ -172,8 +172,8 @@
               </a>
             </li>
 
-            <li class="menu-item">
-              <a href="{{route('dashboard')}}" class="menu-link">
+            <li class="menu-item {{request()->is('dashboard/advance/profile') ? 'active' : ' '}}">
+              <a href="{{route('dashboard.advance.profile')}}" class="menu-link">
                 <i class='menu-icon bx bx-walk'></i>
                 <div data-i18n="Analytics">Advance Profile</div>
               </a>

@@ -115,27 +115,14 @@ class MyprofileController extends Controller
         return back()->with('name_update', 'Name Updated Successfully');
     }
     }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Myprofile $myprofile)
-    {
-        //
-    }
+
+
 
     /**
-     * Update the specified resource in storage.
+     * Advance Profile Link
      */
-    public function update(Request $request, Myprofile $myprofile)
-    {
-        //
+    public function advance_profile(){
+        return view('backend.my_profile.advance_profile');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Myprofile $myprofile)
-    {
-        //
-    }
 }
