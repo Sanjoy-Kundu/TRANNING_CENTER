@@ -30,7 +30,27 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/frontend')}}/css/style.css" rel="stylesheet">
 
+  <!---Swiper js css--->
+  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /> --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+
 </head>
+          <!-- Demo styles -->
+  <style>
+    body{
+        margin: 0px;
+    }
+ .swiper-container {
+  width: 100vw;
+  height: 100vh;
+/*     background: #fd5; */
+}
+.swiper-slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  </style>
 
 <body>
 
@@ -162,6 +182,39 @@
   <!-- Template Main JS File -->
   <script src="{{asset('assets/frontend')}}/js/main.js"></script>
 
+
+  <!-- Swiper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+const mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    speed: 300,
+   mousewheel: true,
+   coverflowEffect: {
+    rotate: 30,
+    slideShadows: true
+  },
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })
+
+  </script>
 </body>
 
 </html>
