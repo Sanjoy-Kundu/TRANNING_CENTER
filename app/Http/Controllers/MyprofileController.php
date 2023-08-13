@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Myprofile;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -125,10 +126,11 @@ class MyprofileController extends Controller
         return view('backend.my_profile.advance_profile');
     }
 
-    public function job_profile(){
+    public function job_profile_advance(){
         return view('backend.my_profile.job_profile');
     }
-    public function job_profile_store(Request $request , $id){
+
+    public function job_profile_store_advance(Request $request , $id){
         $request->validate([
             'job_profile_name'                       => 'required',
             'job_profile_email'                       => 'required',
@@ -151,6 +153,22 @@ class MyprofileController extends Controller
             'job_profile_github_account.required' => 'This field is required',
             'job_profile_your_photo.required' => 'This field is required',
      ]);
-        return back();
+
+
+
+
+     Myprofile::insert([
+        'User_id' =>$id,
+        'your_name' => $request ->job_profile_name,
+        'your_email' => $request ->job_profile_email,
+        'your_designation' => $request ->job_profile_designation,
+        'your_mobile_number' => $request ->job_profile_phone_number,
+        'your_address' => $request ->job_profile_address,
+        'your_skills' => $request ->job_profile_your_skills,
+        'your_portfolio' => $request ->job_profile_portfolio,
+        'your_github_link' => $request ->job_profile_github_account,
+        'created_at' => Carbon::now(),
+     ]);
+        return 'data inserted ok';
     }
 }

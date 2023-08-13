@@ -56,7 +56,6 @@
 <body>
 
 
-
   <main class="mt-5">
 	<section class="container">
 		<article>
@@ -90,18 +89,7 @@
 				</form>
 		</section>
 	</section>
-  <!--===========Password show javascript start==========-->
-  <script>
-    function pFunction(){
-      var y = document.getElementById('password');
-      if(y.type === 'password'){
-        y.type = 'text';
-      }else{
-        y.type = "password";
-      }
-    }
-  </script>
-  <!--===========Password show javascript  end==========-->
+
 
   </main>
 
@@ -118,6 +106,19 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('assets/frontend')}}/js/main.js"></script>
+
+    <!--===========Password show javascript start==========-->
+    <script>
+        function pFunction(){
+          var y = document.getElementById('password');
+          if(y.type === 'password'){
+            y.type = 'text';
+          }else{
+            y.type = "password";
+          }
+        }
+      </script>
+      <!--===========Password show javascript  end==========-->
 
 </body>
 
