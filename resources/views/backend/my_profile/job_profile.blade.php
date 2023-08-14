@@ -4,7 +4,7 @@
             <div class="container">
                 <h1 class="text-center pt-3">Wellcome to  {{Auth::user()->name}} Profile</h1>
                   <div class="w-75 mx-auto mt-3 mb-3">
-                    <form action="{{route('dashboard.advance.job.profile.store', Auth::user()->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('dashboard.advance.job.profile.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label"><b class="fs-4">Your Name</b></label>

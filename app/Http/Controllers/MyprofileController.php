@@ -122,13 +122,13 @@ class MyprofileController extends Controller
     /**
      * Advance Profile Link
      */
-    public function advance_profile(){
-        return view('backend.my_profile.advance_profile');
-    }
+    // public function advance_profile(){
+    //     return view('backend.my_profile.advance_profile');
+    // }
 
-    public function job_profile_advance(){
-        return view('backend.my_profile.job_profile');
-    }
+    // public function job_profile_advance(){
+    //     return view('backend.my_profile.job_profile');
+    // }
 
     public function job_profile_store_advance(Request $request , $id){
         $request->validate([

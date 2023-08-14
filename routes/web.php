@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddUserController;
+use App\Http\Controllers\AdvanceProfileController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
@@ -154,9 +155,9 @@ Route::get('dashboard/my/profile', [MyprofileController::class, 'my_profile'])->
 Route::post('dashboard/my/profile/password/change', [MyprofileController::class, 'store'])->name('dashboard.my.profile.password.change');
 Route::post('dashboard/my/profile/store/{id}', [MyprofileController::class, 'profile_store'])->name('dashboard.my.profile.store');
 
-Route::get('dashboard/advance/profile', [MyprofileController::class, 'advance_profile'])->name('dashboard.advance.profile');
-Route::get('dashboard/advance/job/profile', [MyprofileController::class, 'job_profile_advance'])->name('dashboard.advance.job.profile');
-//Route::post('dashboard/advance/job/profile/store/{id}', [MyprofileController::class, 'job_profile_store_advance'])->name('dashboard.advance.job.profile.store');
+Route::get('dashboard/advance/profile', [AdvanceProfileController::class, 'advance_profile'])->name('dashboard.advance.profile');
+Route::get('dashboard/advance/job/profile', [AdvanceProfileController::class, 'job_profile_advance'])->name('dashboard.advance.job.profile');
+Route::post('dashboard/advance/job/profile/store', [AdvanceProfileController::class, 'job_profile_store_advance'])->name('dashboard.advance.job.profile.store');
 
 
 //advance Profile
