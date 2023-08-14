@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 07, 2023 at 07:17 PM
+-- Generation Time: Aug 14, 2023 at 10:44 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -24,13 +24,44 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `advance_profiles`
+--
+
+CREATE TABLE `advance_profiles` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` int NOT NULL,
+  `job_profile_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_designation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_phone_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_address` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_your_skills` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_portfolio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_github_account` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_profile_your_photo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `advance_profiles`
+--
+
+INSERT INTO `advance_profiles` (`id`, `user_id`, `job_profile_name`, `job_profile_email`, `job_profile_designation`, `job_profile_phone_number`, `job_profile_address`, `job_profile_your_skills`, `job_profile_portfolio`, `job_profile_github_account`, `job_profile_your_photo`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'abc', 'abc@gmail.com', 'wi', '018089821', 'afaaf', 'aadsffa', 'aafdasfa', 'aafafa', 'C:\\Users\\Sonjoy\\AppData\\Local\\Temp\\php1EA1.tmp', '2023-08-14 04:43:07', NULL, NULL),
+(2, 1, 'camu@mailinator.com', 'gosurohedu@mailinator.com', 'picy@mailinator.com', '+1 (923) 841-5537', 'xeqerecot@mailinator.com', 'vawigo@mailinator.com', 'ceto@mailinator.com', 'tobilen@mailinator.com', 'C:\\Users\\Sonjoy\\AppData\\Local\\Temp\\php43ED.tmp', '2023-08-14 04:43:17', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_image` longtext COLLATE utf8mb4_unicode_ci,
+  `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -53,7 +84,7 @@ INSERT INTO `categories` (`id`, `category_name`, `category_image`, `created_at`,
 CREATE TABLE `courses` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int NOT NULL,
-  `course_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `course_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` int NOT NULL,
   `instructor_id` int NOT NULL,
   `course_price` int NOT NULL,
@@ -61,10 +92,10 @@ CREATE TABLE `courses` (
   `discount` int NOT NULL,
   `total_seats` int NOT NULL,
   `discounted_price` int NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `reject` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
-  `course_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `course_image` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reject` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
+  `course_description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `course_image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -86,11 +117,11 @@ INSERT INTO `courses` (`id`, `user_id`, `course_title`, `category_id`, `instruct
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -102,7 +133,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -120,7 +151,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2023_07_02_102625_create_categories_table', 7),
 (23, '2023_06_29_120036_create_courses_table', 8),
 (24, '2023_06_30_165700_create_success_students_table', 9),
-(27, '2023_07_30_172732_create_notices_table', 10);
+(27, '2023_07_30_172732_create_notices_table', 10),
+(33, '2023_08_14_095322_create_advance_profiles_table', 11);
 
 -- --------------------------------------------------------
 
@@ -131,9 +163,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `notices` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int NOT NULL,
-  `notice_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `notice_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `notice_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notice_description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -144,7 +176,8 @@ CREATE TABLE `notices` (
 --
 
 INSERT INTO `notices` (`id`, `user_id`, `notice_name`, `notice_description`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '10 Days off', 'lorem ipusm is good for us', 'approve', '2023-08-04 04:22:21', '2023-08-04 04:22:40', NULL);
+(1, 1, '10 Days off', 'lorem ipusm is good for us', 'approve', '2023-08-04 04:22:21', '2023-08-04 04:22:40', NULL),
+(2, 1, 'applicaiton Noice', 'This is application notice. Please Application start form 11-4-23 to 8-7-24', 'pending', '2023-08-12 20:01:22', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,8 +187,8 @@ INSERT INTO `notices` (`id`, `user_id`, `notice_name`, `notice_description`, `st
 
 CREATE TABLE `ourpartners` (
   `id` bigint UNSIGNED NOT NULL,
-  `partner_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `partner_image` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `partner_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `partner_image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -177,8 +210,8 @@ INSERT INTO `ourpartners` (`id`, `partner_name`, `partner_image`, `created_at`, 
 
 CREATE TABLE `partners` (
   `id` bigint UNSIGNED NOT NULL,
-  `partner_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `partner_image` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `partner_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `partner_image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -191,8 +224,8 @@ CREATE TABLE `partners` (
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -204,11 +237,11 @@ CREATE TABLE `password_reset_tokens` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -223,10 +256,10 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `success_students` (
   `id` bigint UNSIGNED NOT NULL,
-  `student_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_story` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `student_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_story` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -248,13 +281,13 @@ INSERT INTO `success_students` (`id`, `student_name`, `student_title`, `student_
 
 CREATE TABLE `trainers` (
   `id` bigint UNSIGNED NOT NULL,
-  `trainer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trainer_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trainer_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trainer_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trainer_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trainer_description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `trainer_salary` int NOT NULL,
-  `trainer_facebook_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trainer_linkdin_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trainer_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trainer_facebook_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trainer_linkdin_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trainer_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -276,13 +309,13 @@ INSERT INTO `trainers` (`id`, `trainer_name`, `trainer_title`, `trainer_descript
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'student' COMMENT 'admin,vendor,customer',
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'student' COMMENT 'admin,vendor,customer',
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -307,6 +340,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `pr
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `advance_profiles`
+--
+ALTER TABLE `advance_profiles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `advance_profiles_job_profile_email_unique` (`job_profile_email`);
 
 --
 -- Indexes for table `categories`
@@ -391,6 +431,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `advance_profiles`
+--
+ALTER TABLE `advance_profiles`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -412,13 +458,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `notices`
 --
 ALTER TABLE `notices`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ourpartners`
