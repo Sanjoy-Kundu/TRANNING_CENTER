@@ -18,6 +18,5 @@ class AdvanceProfile extends Model
        ' job_profile_portfolio',
        ' job_profile_github_account',
        ' job_profile_github_account',
-       ' job_profile_your_photo'
     ];
 }

@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('job_profile_your_skills');
             $table->string('job_profile_portfolio');
             $table->string('job_profile_github_account');
-            $table->longText('job_profile_your_photo');
             $table->timestamps();
             $table->softDeletes();
         });

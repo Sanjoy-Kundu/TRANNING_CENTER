@@ -6,6 +6,8 @@ use App\Models\AdvanceProfile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AdvanceProfileController extends Controller
 {
@@ -22,7 +24,14 @@ class AdvanceProfileController extends Controller
      * Advance Job Profile form
      */
     public function job_profile_advance(){
+       $AdvanceProfileStatus = AdvanceProfile::where('user_id', Auth::user()->id)->get();
+       if($AdvanceProfileStatus->count() < 1){
         return view('backend.my_profile.job_profile');
+       }else{
+        $jobProfile = AdvanceProfile::all();
+        return view('backend.my_profile.job_profile_update', compact('jobProfile'));
+       }
+
     }
 
     /***
@@ -39,7 +48,6 @@ class AdvanceProfileController extends Controller
         'job_profile_your_skills'              => 'required',
         'job_profile_portfolio'                  => 'required',
         'job_profile_github_account'     => 'required',
-        'job_profile_your_photo'           => 'required',
     ],
     [
         'job_profile_name.required' => 'This field is required',
@@ -53,20 +61,25 @@ class AdvanceProfileController extends Controller
         'job_profile_your_photo.required' => 'This field is required',
  ]);
 
-        AdvanceProfile::insert([
-            'user_id' => Auth::user()->id,
-           'job_profile_name' => $request-> job_profile_name,
-           'job_profile_email' => $request-> job_profile_email,
-           'job_profile_designation' => $request-> job_profile_designation,
-           'job_profile_phone_number' => $request-> job_profile_phone_number,
-           'job_profile_address' => $request-> job_profile_address,
-           'job_profile_your_skills' => $request-> job_profile_your_skills,
-            'job_profile_portfolio' => $request-> job_profile_portfolio,
-           'job_profile_github_account' => $request-> job_profile_github_account,
-           'job_profile_your_photo' => $request-> job_profile_your_photo,
-           'created_at' => Carbon::now(),
-        ]);
-        return back();
+
+                        $AdvanceProfileStatus = AdvanceProfile::where('user_id', Auth::user()->id)->get();
+                        if($AdvanceProfileStatus->count() < 1){
+                            AdvanceProfile::insertGetId([
+                                'user_id' => Auth::user()->id,
+                                'job_profile_name' => $request->job_profile_name,
+                                'job_profile_email' => $request->job_profile_email,
+                                'job_profile_designation' => $request->job_profile_designation,
+                                'job_profile_phone_number' => $request->job_profile_phone_number,
+                                'job_profile_address' => $request->job_profile_address,
+                                'job_profile_your_skills' => $request->job_profile_your_skills,
+                                'job_profile_portfolio' => $request->job_profile_portfolio,
+                                'job_profile_github_account' => $request->job_profile_github_account,
+                                'created_at' => Carbon::now()
+                                 ]);
+                             return back()->withSuccess('Advance Profile Uploaded Success');
+                        }
+
+
     }
 
 
